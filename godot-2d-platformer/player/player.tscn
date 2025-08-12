@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=5 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Texture2D" uid="uid://g8mpecxnmfdi" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
 animations = [{
@@ -13,7 +14,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
+radius = 62.0
+height = 124.0
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rkbax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_oul6g")
