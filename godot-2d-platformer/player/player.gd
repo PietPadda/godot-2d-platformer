@@ -23,7 +23,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	# left/right movement
-	if direction: # if dir applied
+	if direction != 0: # if dir applied
 		velocity.x = direction * SPEED # add hor speed
 		$AnimatedSprite2D.flip_h = direction < 0 # flip if going left
 		$AnimatedSprite2D.play("run") # animation if going right

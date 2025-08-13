@@ -65,3 +65,5 @@ animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oul6g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
