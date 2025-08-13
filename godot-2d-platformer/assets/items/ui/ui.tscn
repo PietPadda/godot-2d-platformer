@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0in6ytgwo8rc"]
+
+[ext_resource type="Script" uid="uid://dnrlmyj4hrptn" path="res://assets/items/ui/ui.gd" id="1_52ckw"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_52ckw")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "Coins: 0"

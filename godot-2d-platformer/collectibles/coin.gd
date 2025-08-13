@@ -4,5 +4,6 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	# check if player entered body
 	if body.name == "Player":
-		# remove node at end of phys frame
-		queue_free()
+		# announce to game that coin collected (emit signal)
+		GameEvents.coin_collected.emit()
+		queue_free() # remove node at end of phys frame
