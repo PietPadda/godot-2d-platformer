@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=10 format=4 uid="uid://wohnj7hu8qka"]
 
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfvs2lpmeel6y" path="res://assets/background/skill-desc_0002_far-buildings.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/skill-desc_0001_buildings.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/skill-desc_0000_foreground.png" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="7_272bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -2978,3 +2979,15 @@ position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
 texture = ExtResource("6_272bh")
 offset = Vector2(544, 0)
+
+[node name="Coin" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(-160, 240)
+
+[node name="Coin2" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(-719, 240)
+
+[node name="Coin3" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(1104, 240)
+
+[node name="Coin4" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(1770, 240)
