@@ -3,14 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
+normal = Vector2(0.00766261, -0.999971)
+distance = -1.80838
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(561, 319)
+position = Vector2(557, 247)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0, 570)
+position = Vector2(0, 610)
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
