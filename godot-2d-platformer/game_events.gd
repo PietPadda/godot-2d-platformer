@@ -1,4 +1,5 @@
 extends Node
 
-# any part of the game can emit this signal when a coin is collected.
+# global signals
 signal coin_collected
+signal player_died

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=12 format=4 uid="uid://wohnj7hu8qka"]
 
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="2_0xm2m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/skill-desc_0000_foreground.png" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://assets/items/ui/ui.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="9_kek77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -2888,7 +2889,7 @@ sources/0 = SubResource("TileSetAtlasSource_h2yge")
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(557, 247)
+position = Vector2(557, 92)
 
 [node name="TlleMap" type="TileMapLayer" parent="."]
 position = Vector2(-3, 0)
@@ -2903,18 +2904,18 @@ motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
-scale = Vector2(4.23529, 4.05)
+scale = Vector2(4.235, 8)
 texture = ExtResource("3_h2yge")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
-scale = Vector2(4.23529, 4.05)
+scale = Vector2(4.235, 8)
 texture = ExtResource("3_h2yge")
 offset = Vector2(-544, 0)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
-scale = Vector2(4.23529, 4.05)
+scale = Vector2(4.235, 8)
 texture = ExtResource("3_h2yge")
 offset = Vector2(544, 0)
 
@@ -2994,3 +2995,15 @@ position = Vector2(1104, 240)
 position = Vector2(1770, 240)
 
 [node name="Ui" parent="." instance=ExtResource("8_5vw27")]
+
+[node name="Spikes" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(166, 319)
+
+[node name="Spikes2" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(-453, 319)
+
+[node name="Spikes3" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(1453, 319)
+
+[node name="Spikes4" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(838, 319)
