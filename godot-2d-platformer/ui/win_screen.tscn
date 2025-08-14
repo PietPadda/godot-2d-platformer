@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://duaarxn2stwat"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 560.0
+offset_top = 276.0
+offset_right = 600.0
+offset_bottom = 316.0
+
+[node name="Label" type="Label" parent="."]
+layout_direction = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -534.5
+offset_top = -141.5
+offset_right = 526.5
+offset_bottom = 173.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 260
+text = "You Win!"

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=14 format=4 uid="uid://wohnj7hu8qka"]
 
+[ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://b777fkfgdkej2" path="res://assets/background/bg_0003_bg.png" id="3_h2yge"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_efxa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -2887,6 +2889,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_4c57u")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(557, 92)
@@ -2988,6 +2991,9 @@ position = Vector2(-160, 240)
 [node name="Coin2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(-719, 240)
 
+[node name="Coin5" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(-1437, 240)
+
 [node name="Coin3" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(1104, 240)
 
@@ -3002,8 +3008,17 @@ position = Vector2(166, 319)
 [node name="Spikes2" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(-453, 319)
 
+[node name="Spikes5" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(-1064, 319)
+
+[node name="Spikes6" parent="." instance=ExtResource("9_kek77")]
+position = Vector2(-1816, 319)
+
 [node name="Spikes3" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(1453, 319)
 
 [node name="Spikes4" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(838, 319)
+
+[node name="Goal" parent="." instance=ExtResource("11_efxa6")]
+position = Vector2(-2085, 236)
