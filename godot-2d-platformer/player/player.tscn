@@ -53,10 +53,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6g"]
-radius = 62.0
-height = 124.0
+radius = 33.0
+height = 102.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -64,6 +64,7 @@ sprite_frames = SubResource("SpriteFrames_rkbax")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_oul6g")
 
 [node name="Camera2D" type="Camera2D" parent="."]

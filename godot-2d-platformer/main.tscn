@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://b777fkfgdkej2" path="res://assets/background/skill-desc_0003_bg.png" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://dfvs2lpmeel6y" path="res://assets/background/skill-desc_0002_far-buildings.png" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/skill-desc_0001_buildings.png" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/skill-desc_0000_foreground.png" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://b777fkfgdkej2" path="res://assets/background/bg_0003_bg.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dfvs2lpmeel6y" path="res://assets/background/bg_0002_far-buildings.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/bg_0001_buildings.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://assets/items/ui/ui.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="9_kek77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]

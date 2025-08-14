@@ -37,16 +37,13 @@ func _physics_process(delta):
 		
 	# func that moves the char
 	move_and_slide()
-		
+
 # called on node entering scene
 func _ready():
 	# link on_player_died func to global signal
 	GameEvents.player_died.connect(on_player_died)
-	
-# player dead
-func on_player_died():
-	# restart by reload current scene
-	get_tree().reload_current_scene()
-	
 
-	
+# player death animation
+func on_player_died():
+	set_physics_process(false) # stop processing physics
+	$AnimatedSprite2D.hide() #  hide the player.
