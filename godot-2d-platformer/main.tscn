@@ -3031,3 +3031,18 @@ autoplay = true
 
 [node name="Mob" parent="." instance=ExtResource("8_ycdy4")]
 position = Vector2(-337, 268)
+
+[node name="Mob5" parent="." instance=ExtResource("8_ycdy4")]
+position = Vector2(1270, 268)
+
+[node name="Mob6" parent="." instance=ExtResource("8_ycdy4")]
+position = Vector2(2043, 268)
+
+[node name="Mob2" parent="." instance=ExtResource("8_ycdy4")]
+position = Vector2(-870, 268)
+
+[node name="Mob3" parent="." instance=ExtResource("8_ycdy4")]
+position = Vector2(-1597, 268)
+
+[node name="Mob4" parent="." instance=ExtResource("8_ycdy4")]
+position = Vector2(-2254, 268)

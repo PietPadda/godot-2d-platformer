@@ -4,6 +4,8 @@ extends Node2D
 const WIN_SCREEN = preload("res://ui/win_screen.tscn")
 
 func _ready():
+	# seed the random number gen using the sys clock
+	randomize()
 	# listen for global level_finished signal
 	GameEvents.level_finished.connect(on_level_finished)
 

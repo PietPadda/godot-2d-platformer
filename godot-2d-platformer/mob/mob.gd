@@ -6,9 +6,17 @@ extends CharacterBody2D
 
 # variables
 var speed = 80.0 # walk speed
-var direction = -1.0 # -1 for left, 1 for right
+var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
+
+# funct runs once when the mob is created
+func _ready():
+	# randi() % 2 gives us either 0 or 1, perfect 50/50 chance
+	if randi() % 2 == 0: # if even
+		direction = 1.0 # Go right
+	else: # if odd
+		direction = -1.0 # Go left
 
 # mob movement
 func _physics_process(delta):
