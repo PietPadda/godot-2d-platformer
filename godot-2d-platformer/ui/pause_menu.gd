@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 # resume button
 func _on_resume_button_pressed() -> void:
