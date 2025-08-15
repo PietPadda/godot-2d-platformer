@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cr58rfn6mjrfd"]
+[gd_scene load_steps=32 format=3 uid="uid://cr58rfn6mjrfd"]
 
 [ext_resource type="Texture2D" uid="uid://bslgd3seqa8ow" path="res://assets/enemies/Skeleton_01_White_Die.png" id="1_6jlfs"]
 [ext_resource type="Script" uid="uid://c6nuondjp2227" path="res://mob/mob.gd" id="1_pirjb"]
@@ -188,15 +188,17 @@ size = Vector2(27.5, 6.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
 size = Vector2(27.5, 41.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pirjb"]
+radius = 332.014
+
 [node name="Mob" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_pirjb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aal5p")
-animation = &"squashed"
-frame = 12
-frame_progress = 1.0
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
@@ -224,6 +226,13 @@ shape = SubResource("RectangleShape2D_mixeo")
 wait_time = 2.0
 one_shot = true
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_pirjb")
+
 [connection signal="body_entered" from="StompDetector" to="." method="_on_stomp_detector_body_entered"]
 [connection signal="body_entered" from="SideDetector" to="." method="_on_side_detector_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
