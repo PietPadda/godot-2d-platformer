@@ -3030,10 +3030,4 @@ stream = ExtResource("12_dg77c")
 autoplay = true
 
 [node name="Mob" parent="." instance=ExtResource("8_ycdy4")]
-position = Vector2(-1230, 302)
-
-[node name="Mob2" parent="." instance=ExtResource("8_ycdy4")]
-position = Vector2(-937, 302)
-
-[node name="Mob3" parent="." instance=ExtResource("8_ycdy4")]
-position = Vector2(-377, 302)
+position = Vector2(-337, 268)
