@@ -186,7 +186,7 @@ height = 48.0
 size = Vector2(32, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(32, 46)
+size = Vector2(26, 46)
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_pirjb")
@@ -200,7 +200,7 @@ position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_2rxfc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 32)
+target_position = Vector2(0, 42)
 
 [node name="StompDetector" type="Area2D" parent="."]
 

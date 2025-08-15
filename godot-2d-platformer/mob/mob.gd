@@ -29,6 +29,14 @@ func _physics_process(delta):
 
 # player lands on enemy head
 func _on_side_detector_body_entered(body: Node2D) -> void:
+		# player touch collision box
+	if body.is_in_group("player"):
+		# player hit from the side
+		# emit signal for player death
+		GameEvents.palayer_died.emit()
+
+# player touches enemy anywhere else
+func _on_stomp_detector_body_entered(body: Node2D) -> void:
 	# player touch collision box
 	if body.is_in_group("player"):
 		# When stomped, the Mob stops moving and gets squashed.
@@ -36,11 +44,3 @@ func _on_side_detector_body_entered(body: Node2D) -> void:
 		animated_sprite.play("squashed") # play death animation
 		# add a small bounce for the player
 		body.velocity.y = body.JUMP_VELOCITY * 0.7 
-
-# player touches enemy anywhere else
-func _on_stomp_detector_body_entered(body: Node2D) -> void:
-	# player touch collision box
-	if body.is_in_group("player"):
-		# player hit from the side
-		# emit signal for player death
-		GameEvents.player_died.emit()
