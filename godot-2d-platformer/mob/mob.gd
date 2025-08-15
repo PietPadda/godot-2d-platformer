@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var ground_check_ray = $RayCast2D
 
 # variables
-var speed = 50.0 # walk speed
+var speed = 80.0 # walk speed
 var direction = -1.0 # -1 for left, 1 for right
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
@@ -23,16 +23,22 @@ func _physics_process(delta):
 	# if ray not colliding with anything, means it's at an edge
 	if not ground_check_ray.is_colliding():
 		direction *= -1.0 # flip the direction
-		scale.x *= -1.0 # flip the entire node (sprite and raycast)
+		# scale.x *= -1.0 # DELETE THIS RUBBISH!
 
 	# general velocity
 	velocity.x = direction * speed
 	# flip_h true if -1 (left), false if 1 (right, default)
 	animated_sprite.flip_h = direction < 0
-	animated_sprite.play("walk") # walk animation
 	
-	# godots magic func for sliding on floor
-	move_and_slide()
+	# stateless raycast flip
+	# set ray's direction based on the 'direction' variable every frame
+	if direction > 0: # moving right
+		ground_check_ray.target_position.x = abs(ground_check_ray.target_position.x)
+	else: # moving left
+		ground_check_ray.target_position.x = -abs(ground_check_ray.target_position.x)
+		
+	animated_sprite.play("walk") # walk animation
+	move_and_slide() # godots magic func for sliding on floor
 
 # player lands on enemy head
 func _on_side_detector_body_entered(body: Node2D) -> void:
@@ -54,7 +60,8 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 		# add a small bounce for the player
 		body.velocity.y = body.JUMP_VELOCITY * 0.7 
 		
-		# disable detectors
+		# disable detectors and collision box
+		$CollisionShape2D.set_deferred("disabled", true) # main solid body
 		$SideDetector.monitoring = false
 		$StompDetector.monitoring = false
 

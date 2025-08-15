@@ -138,9 +138,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_od6er")
 }],
-"loop": true,
+"loop": false,
 "name": &"squashed",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -175,7 +175,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rxfc"]
@@ -183,10 +183,10 @@ radius = 13.0
 height = 46.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pirjb"]
-size = Vector2(40.5, 10.5)
+size = Vector2(27.5, 6.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(27.5, 37.5)
+size = Vector2(27.5, 41.5)
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_pirjb")
@@ -194,7 +194,7 @@ script = ExtResource("1_pirjb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aal5p")
-animation = &"squashed"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
@@ -208,14 +208,14 @@ target_position = Vector2(0, 82)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2(-0.25, -9.75)
+position = Vector2(-0.25, -11.75)
 shape = SubResource("RectangleShape2D_pirjb")
 
 [node name="SideDetector" type="Area2D" parent="."]
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideDetector"]
-position = Vector2(-0.25, 14.25)
+position = Vector2(-0.25, 12.25)
 shape = SubResource("RectangleShape2D_mixeo")
 
 [node name="Timer" type="Timer" parent="."]
