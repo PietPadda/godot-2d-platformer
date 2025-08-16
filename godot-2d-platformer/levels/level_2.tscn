@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cfnirnfk8vpbv"]
+[gd_scene load_steps=14 format=4 uid="uid://cfnirnfk8vpbv"]
 
 [ext_resource type="Script" uid="uid://cule4gwmbvlyw" path="res://levels/level_2.gd" id="1_wcjpl"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_5orea"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/bg_0001_buildings.png" id="6_k2aru"]
 [ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="7_ndgrd"]
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="8_h351q"]
-[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="9_dpc8t"]
 [ext_resource type="AudioStream" uid="uid://xu0qjquogf6v" path="res://assets/audio/music/w2 Orc 2.ogg" id="11_hbb88"]
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_itbe0"]
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_he6wg"]
@@ -3018,8 +3017,6 @@ position = Vector2(2529, 240)
 
 [node name="Coin4" parent="." instance=ExtResource("8_h351q")]
 position = Vector2(1770, 240)
-
-[node name="Ui" parent="." instance=ExtResource("9_dpc8t")]
 
 [node name="Goal" parent="." instance=ExtResource("11_itbe0")]
 position = Vector2(4534, 243)

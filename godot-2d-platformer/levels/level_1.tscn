@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=15 format=4 uid="uid://wohnj7hu8qka"]
 
 [ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://levels/level_1.gd" id="1_sof0w"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_ggavl"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/bg_0001_buildings.png" id="6_gjkv5"]
 [ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="7_00ld1"]
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="8_3qmij"]
-[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="9_kb5eu"]
 [ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="10_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_ethxx"]
 [ext_resource type="AudioStream" uid="uid://csxhk8skerwf6" path="res://assets/audio/music/w2 Human 2.ogg" id="12_nmsli"]
@@ -3001,8 +3000,6 @@ position = Vector2(1104, 240)
 
 [node name="Coin4" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(1770, 240)
-
-[node name="Ui" parent="." instance=ExtResource("9_kb5eu")]
 
 [node name="Spikes" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(166, 319)
