@@ -1,4 +1,4 @@
-# main_menu.gd
+# game.gd
 
 extends Node
 
@@ -18,6 +18,7 @@ var current_level_instance # track current scene
 func _ready():
 	# seed the random number gen using the sys clock
 	randomize()
+	GameEvents.current_score = 0 # reset score on new game
 	# listen for global level_finished signal
 	GameEvents.level_finished.connect(on_level_finished)
 	# load current level instance

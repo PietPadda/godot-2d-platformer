@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="9_kb5eu"]
 [ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="10_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_ethxx"]
-[ext_resource type="AudioStream" uid="uid://bqk7mj4mk72wa" path="res://assets/audio/music/bg_music.ogg" id="12_3o2xh"]
+[ext_resource type="AudioStream" uid="uid://csxhk8skerwf6" path="res://assets/audio/music/w2 Human 2.ogg" id="12_nmsli"]
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_duihb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -3026,7 +3026,8 @@ position = Vector2(838, 319)
 position = Vector2(-2086, 243)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_3o2xh")
+process_mode = 3
+stream = ExtResource("12_nmsli")
 autoplay = true
 
 [node name="Mob" parent="." instance=ExtResource("13_duihb")]

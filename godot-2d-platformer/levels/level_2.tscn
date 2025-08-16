@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="7_ndgrd"]
 [ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="8_h351q"]
 [ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="9_dpc8t"]
+[ext_resource type="AudioStream" uid="uid://xu0qjquogf6v" path="res://assets/audio/music/w2 Orc 2.ogg" id="11_hbb88"]
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_itbe0"]
-[ext_resource type="AudioStream" uid="uid://bqk7mj4mk72wa" path="res://assets/audio/music/bg_music.ogg" id="12_xrja0"]
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_he6wg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -3025,10 +3025,14 @@ position = Vector2(1770, 240)
 position = Vector2(4534, 243)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_xrja0")
+process_mode = 3
+stream = ExtResource("11_hbb88")
 autoplay = true
 
 [node name="Mob" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(-337, 268)
+
+[node name="Mob19" parent="." instance=ExtResource("13_he6wg")]
 position = Vector2(-337, 268)
 
 [node name="Mob5" parent="." instance=ExtResource("13_he6wg")]
@@ -3065,19 +3069,37 @@ position = Vector2(1239, 268)
 position = Vector2(3584, 268)
 
 [node name="Mob14" parent="." instance=ExtResource("13_he6wg")]
-position = Vector2(-59, 268)
+position = Vector2(-693, 268)
+
+[node name="Mob20" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(886, 268)
+
+[node name="Mob21" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(1959, 268)
+
+[node name="Mob22" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(3143, 268)
+
+[node name="Mob23" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(-867, 268)
+
+[node name="Mob24" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(-1035, 275)
 
 [node name="Mob15" parent="." instance=ExtResource("13_he6wg")]
-position = Vector2(-1126, 268)
+position = Vector2(-1294, 275)
+
+[node name="Mob25" parent="." instance=ExtResource("13_he6wg")]
+position = Vector2(-1294, 275)
 
 [node name="Mob16" parent="." instance=ExtResource("13_he6wg")]
-position = Vector2(-1126, 268)
+position = Vector2(-1294, 275)
 
 [node name="Mob2" parent="." instance=ExtResource("13_he6wg")]
 position = Vector2(-1878, 268)
 
 [node name="Mob3" parent="." instance=ExtResource("13_he6wg")]
-position = Vector2(-1597, 268)
+position = Vector2(-1684, 268)
 
 [node name="Mob4" parent="." instance=ExtResource("13_he6wg")]
 position = Vector2(-2123, 269)

@@ -1,3 +1,5 @@
+# ui/main_menu.gd
+
 extends Control
 
 # path to main game level
