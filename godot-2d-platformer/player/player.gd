@@ -28,6 +28,11 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY # sudden jump velocity
 		jumps_left -= 1 # decr jumps
 		
+	# variable jump height
+	# hold jump button to go max, release to cut momentum
+	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY * 0 # stop all momentum
+		
 	# get left/right input
 	# Input.get_axis() returns a value between -1 and 1.
 	var direction = Input.get_axis("ui_left", "ui_right")
