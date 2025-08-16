@@ -23,6 +23,7 @@ var active_projectile = null # project live init
 
 # file paths
 const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
+const SHOOT_SOUND = preload("res://assets/audio/projectiles/pellet.wav")
 const PELLET_SCENE = preload("res://projectiles/pellet.tscn")
 
 # funct runs once when the mob is created
@@ -59,7 +60,6 @@ func patrol_state(delta):
 	# if ray not colliding with anything, means it's at an edge
 	if not ground_check_ray.is_colliding():
 		direction *= -1.0 # flip the direction
-		# scale.x *= -1.0 # DELETE THIS RUBBISH!
 
 	# general velocity
 	velocity.x = direction * speed
@@ -95,6 +95,14 @@ func chase_state(delta):
 	# calc direction to player and move towards them
 	# player - mob position to get either + or - value
 	var direction_to_player = (player.global_position - global_position).normalized()
+	
+	# update direction
+	if direction_to_player.x > 0: # player to the right
+		direction = 1 # right
+	else:
+		direction = -1 # left
+		
+	# apply velocity vector with chase speed boost
 	velocity.x = direction_to_player.x * speed * 4 # chase a bit faster
 	
 	# standard sprite flip and walk logic
@@ -160,6 +168,10 @@ func _on_shoot_timer_timeout() -> void:
 	# edge case: ensure player exists
 	if not is_instance_valid(player):
 		return # early exit
+	
+	# pellet shoot
+	sfx_player.stream = SHOOT_SOUND # set SFX
+	sfx_player.play() # play SFX
 		
 	# create and store pellet instance
 	var pellet = PELLET_SCENE.instantiate() # pellet instance create
@@ -169,4 +181,4 @@ func _on_shoot_timer_timeout() -> void:
 	# set starting position to Muzzle's global position
 	pellet.global_position = muzzle.global_position
 	# tell pellet which direction
-	pellet.direction = Vector2(scale.x, 0).normalized()
+	pellet.direction = Vector2(direction, 0) # use enemy's direction
