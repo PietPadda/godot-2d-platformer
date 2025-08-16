@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=14 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dbqdbjlf5nrrk" path="res://assets/player/p1_front.png" id="2_rgyib"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://boft5dq68laaw" path="res://assets/player/p1_walk06.png" id="6_ebec5"]
 [ext_resource type="Texture2D" uid="uid://cshqpsr4l6y6u" path="res://assets/player/p1_walk01.png" id="7_yllr7"]
 [ext_resource type="Texture2D" uid="uid://di6dq1tv83if2" path="res://assets/player/p1_walk02.png" id="8_kb6p2"]
+[ext_resource type="Texture2D" uid="uid://6hb552114ws1" path="res://assets/player/shield.png" id="10_8t03j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
 animations = [{
@@ -56,6 +57,9 @@ animations = [{
 radius = 33.0
 height = 88.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
+size = Vector2(40, 87)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rkbax")
 
@@ -72,3 +76,17 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Shield" type="Area2D" parent="."]
+position = Vector2(31, 20)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield"]
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("10_8t03j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(3, -17.5)
+shape = SubResource("RectangleShape2D_8t03j")
+
+[connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]

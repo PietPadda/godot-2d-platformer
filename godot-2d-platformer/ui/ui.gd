@@ -33,7 +33,7 @@ func on_coin_collected(value): # pass global score
 
 # update score ui
 func update_score_label():
-		# prefix + score
+	# prefix + score
 	score_label.text = "Coins: " + str(GameEvents.current_score)
 
 # called by the GameEvents signal

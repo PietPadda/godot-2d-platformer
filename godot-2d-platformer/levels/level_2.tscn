@@ -2492,3 +2492,6 @@ position = Vector2(-2123, 269)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("12_hbb88")]
 position = Vector2(4735, 284)
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("12_hbb88")]
+position = Vector2(4735, 284)

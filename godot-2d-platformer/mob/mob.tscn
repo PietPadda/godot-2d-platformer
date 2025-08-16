@@ -199,8 +199,6 @@ script = ExtResource("1_pirjb")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_aal5p")
 animation = &"squashed"
-frame = 6
-frame_progress = 0.493896
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
