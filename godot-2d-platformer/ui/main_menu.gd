@@ -1,7 +1,7 @@
 extends Control
 
 # path to main game level
-const GAME_SCENE_PATH = "res://main.tscn"
+const GAME_SCENE_PATH = "res://game.tscn"
 
 # press Play Game button
 func _on_button_pressed() -> void:

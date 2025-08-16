@@ -1,21 +1,21 @@
 [gd_scene load_steps=16 format=4 uid="uid://wohnj7hu8qka"]
 
-[ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://main.gd" id="1_4c57u"]
-[ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://b777fkfgdkej2" path="res://assets/background/bg_0003_bg.png" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://dfvs2lpmeel6y" path="res://assets/background/bg_0002_far-buildings.png" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/bg_0001_buildings.png" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="6_272bh"]
-[ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="8_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_efxa6"]
-[ext_resource type="AudioStream" uid="uid://bqk7mj4mk72wa" path="res://assets/audio/music/bg_music.ogg" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://levels/level_1.gd" id="1_sof0w"]
+[ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_ggavl"]
+[ext_resource type="Texture2D" uid="uid://cjd00sj24vpht" path="res://assets/tilemap/tiles_spritesheet.png" id="3_ubhxj"]
+[ext_resource type="Texture2D" uid="uid://b777fkfgdkej2" path="res://assets/background/bg_0003_bg.png" id="4_65or1"]
+[ext_resource type="Texture2D" uid="uid://dfvs2lpmeel6y" path="res://assets/background/bg_0002_far-buildings.png" id="5_lhbbi"]
+[ext_resource type="Texture2D" uid="uid://bxlbt0ljeciu5" path="res://assets/background/bg_0001_buildings.png" id="6_gjkv5"]
+[ext_resource type="Texture2D" uid="uid://br330sdu37kjv" path="res://assets/background/bg_0000_foreground.png" id="7_00ld1"]
+[ext_resource type="PackedScene" uid="uid://cydlunpgt04s7" path="res://collectibles/coin.tscn" id="8_3qmij"]
+[ext_resource type="PackedScene" uid="uid://b0in6ytgwo8rc" path="res://ui/ui.tscn" id="9_kb5eu"]
+[ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="10_lfy8a"]
+[ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_ethxx"]
+[ext_resource type="AudioStream" uid="uid://bqk7mj4mk72wa" path="res://assets/audio/music/bg_music.ogg" id="12_3o2xh"]
+[ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_duihb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
-texture = ExtResource("2_0xm2m")
+texture = ExtResource("3_ubhxj")
 margins = Vector2i(17, 17)
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -2891,9 +2891,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_4c57u")
+script = ExtResource("1_sof0w")
 
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." instance=ExtResource("2_ggavl")]
 position = Vector2(557, 92)
 
 [node name="TlleMap" type="TileMapLayer" parent="."]
@@ -2910,18 +2910,18 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
 scale = Vector2(4.235, 8)
-texture = ExtResource("3_h2yge")
+texture = ExtResource("4_65or1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
 scale = Vector2(4.235, 8)
-texture = ExtResource("3_h2yge")
+texture = ExtResource("4_65or1")
 offset = Vector2(-544, 0)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 324)
 scale = Vector2(4.235, 8)
-texture = ExtResource("3_h2yge")
+texture = ExtResource("4_65or1")
 offset = Vector2(544, 0)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2931,18 +2931,18 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("4_1bvp3")
+texture = ExtResource("5_lhbbi")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("4_1bvp3")
+texture = ExtResource("5_lhbbi")
 offset = Vector2(-544, 0)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("4_1bvp3")
+texture = ExtResource("5_lhbbi")
 offset = Vector2(544, 0)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2952,18 +2952,18 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("5_7mycd")
+texture = ExtResource("6_gjkv5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("5_7mycd")
+texture = ExtResource("6_gjkv5")
 offset = Vector2(-544, 0)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("5_7mycd")
+texture = ExtResource("6_gjkv5")
 offset = Vector2(544, 0)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -2973,76 +2973,76 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("6_272bh")
+texture = ExtResource("7_00ld1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("6_272bh")
+texture = ExtResource("7_00ld1")
 offset = Vector2(-544, 0)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(576, 324)
 scale = Vector2(4.23529, 4.05)
-texture = ExtResource("6_272bh")
+texture = ExtResource("7_00ld1")
 offset = Vector2(544, 0)
 
-[node name="Coin" parent="." instance=ExtResource("7_272bh")]
+[node name="Coin" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(-160, 240)
 
-[node name="Coin2" parent="." instance=ExtResource("7_272bh")]
+[node name="Coin2" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(-719, 240)
 
-[node name="Coin5" parent="." instance=ExtResource("7_272bh")]
+[node name="Coin5" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(-1437, 240)
 
-[node name="Coin3" parent="." instance=ExtResource("7_272bh")]
+[node name="Coin3" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(1104, 240)
 
-[node name="Coin4" parent="." instance=ExtResource("7_272bh")]
+[node name="Coin4" parent="." instance=ExtResource("8_3qmij")]
 position = Vector2(1770, 240)
 
-[node name="Ui" parent="." instance=ExtResource("8_5vw27")]
+[node name="Ui" parent="." instance=ExtResource("9_kb5eu")]
 
-[node name="Spikes" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(166, 319)
 
-[node name="Spikes2" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes2" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(-453, 319)
 
-[node name="Spikes5" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes5" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(-1064, 319)
 
-[node name="Spikes6" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes6" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(-1816, 319)
 
-[node name="Spikes3" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes3" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(1453, 319)
 
-[node name="Spikes4" parent="." instance=ExtResource("9_kek77")]
+[node name="Spikes4" parent="." instance=ExtResource("10_lfy8a")]
 position = Vector2(838, 319)
 
-[node name="Goal" parent="." instance=ExtResource("11_efxa6")]
+[node name="Goal" parent="." instance=ExtResource("11_ethxx")]
 position = Vector2(-2086, 243)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_dg77c")
+stream = ExtResource("12_3o2xh")
 autoplay = true
 
-[node name="Mob" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(-337, 268)
 
-[node name="Mob5" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob5" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(1270, 268)
 
-[node name="Mob6" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob6" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(2043, 268)
 
-[node name="Mob2" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob2" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(-870, 268)
 
-[node name="Mob3" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob3" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(-1597, 268)
 
-[node name="Mob4" parent="." instance=ExtResource("8_ycdy4")]
+[node name="Mob4" parent="." instance=ExtResource("13_duihb")]
 position = Vector2(-2254, 268)
