@@ -11,6 +11,8 @@ var player = null # var to hold reference to  player
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var ground_check_ray = $RayCast2D
 @onready var sfx_player = $SFXPlayer
+@onready var shoot_timer = $ShootTimer
+@onready var muzzle = $Muzzle
 
 # variables
 var speed = 40.0 # walk speed
@@ -20,6 +22,7 @@ var is_stomped = false # death state init
 
 # file paths
 const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
+const PELLET_SCENE = preload("res://projectiles/pellet.tscn")
 
 # funct runs once when the mob is created
 func _ready():
@@ -97,6 +100,10 @@ func chase_state(delta):
 	animated_sprite.flip_h = velocity.x < 0
 	animated_sprite.play("walk")
 	move_and_slide()
+	
+	# shoot logic
+	if shoot_timer.is_stopped(): # if timer has finished
+		shoot_timer.start() # restart the timer
 
 # player lands on enemy head
 func _on_side_detector_body_entered(body: Node2D) -> void:
@@ -138,7 +145,21 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		state = CHASE # set mob to hunt the player
 		player = body # the body it chases is the player
 
+# func called on player exiting the visibility radius
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		state = PATROL # set mob to stop hunting
 		player = null # "forget" about the player as it left vis circle
+
+# project shooting logic
+func _on_shoot_timer_timeout() -> void:
+	# edge case: ensure player exists
+	if not is_instance_valid(player):
+		return # early exit
+
+	var pellet = PELLET_SCENE.instantiate() # pellet instance create
+	get_parent().add_child(pellet) # add pellet to level scene
+	# set starting position to Muzzle's global position
+	pellet.global_position = muzzle.global_position
+	# tell pellet which direction
+	pellet.direction = Vector2(scale.x, 0).normalized()

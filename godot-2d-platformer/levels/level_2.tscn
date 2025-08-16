@@ -2433,9 +2433,6 @@ position = Vector2(4298, 268)
 [node name="Mob26" parent="." instance=ExtResource("13_he6wg")]
 position = Vector2(5817, 268)
 
-[node name="Mob30" parent="." instance=ExtResource("13_he6wg")]
-position = Vector2(4723, 166)
-
 [node name="Mob27" parent="." instance=ExtResource("13_he6wg")]
 position = Vector2(6253, 268)
 
