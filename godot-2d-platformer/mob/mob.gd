@@ -19,6 +19,7 @@ var speed = 40.0 # walk speed
 var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
+var active_projectile = null # project live init
 
 # file paths
 const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
@@ -102,7 +103,8 @@ func chase_state(delta):
 	move_and_slide()
 	
 	# shoot logic
-	if shoot_timer.is_stopped(): # if timer has finished
+	# if timer has finished and no active project
+	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
 		shoot_timer.start() # restart the timer
 
 # player lands on enemy head
@@ -124,6 +126,8 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 		animated_sprite.play("squashed") # play death animation
 		sfx_player.stream = SQUASH_SOUND # set SFX
 		sfx_player.play() # play SFX
+		shoot_timer.stop() # stop bullet firing
+		
 		# add a small bounce for the player
 		body.velocity.y = body.JUMP_VELOCITY * 0.7 
 		
@@ -137,7 +141,7 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 
 # func called on timer one shot
 func _on_timer_timeout() -> void:
-	queue_free() # safely delete the mob from  game
+	queue_free() # safely delete the mob from game
 
 # func called on player entering the visibility radius
 func _on_player_detector_body_entered(body: Node2D) -> void:
@@ -156,8 +160,11 @@ func _on_shoot_timer_timeout() -> void:
 	# edge case: ensure player exists
 	if not is_instance_valid(player):
 		return # early exit
-
+		
+	# create and store pellet instance
 	var pellet = PELLET_SCENE.instantiate() # pellet instance create
+	active_projectile = pellet # store instance
+	
 	get_parent().add_child(pellet) # add pellet to level scene
 	# set starting position to Muzzle's global position
 	pellet.global_position = muzzle.global_position
