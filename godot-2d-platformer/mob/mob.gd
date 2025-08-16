@@ -63,6 +63,13 @@ func patrol_state(delta):
 
 	# general velocity
 	velocity.x = direction * speed
+	
+	# muzzle update
+	if direction > 0: # face right
+		muzzle.position.x = abs(muzzle.position.x)
+	else: # face left
+		muzzle.position.x = -abs(muzzle.position.x)
+		
 	# flip_h true if -1 (left), false if 1 (right, default)
 	animated_sprite.flip_h = direction < 0
 	
@@ -104,6 +111,12 @@ func chase_state(delta):
 		
 	# apply velocity vector with chase speed boost
 	velocity.x = direction_to_player.x * speed * 4 # chase a bit faster
+	
+	# muzzle update
+	if direction > 0: # face right
+		muzzle.position.x = abs(muzzle.position.x)
+	else: # face left
+		muzzle.position.x = -abs(muzzle.position.x)
 	
 	# standard sprite flip and walk logic
 	animated_sprite.flip_h = velocity.x < 0
@@ -156,6 +169,11 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		state = CHASE # set mob to hunt the player
 		player = body # the body it chases is the player
+		
+		# first pellet has reduced timer for responsiveness
+		if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
+			# override the timer on first detection with short time
+			shoot_timer.start(0.5)
 
 # func called on player exiting the visibility radius
 func _on_player_detector_body_exited(body: Node2D) -> void:

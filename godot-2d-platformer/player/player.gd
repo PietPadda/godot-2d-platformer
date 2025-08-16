@@ -7,8 +7,8 @@ extends CharacterBody2D
 @onready var sfx_player = $SFXPlayer
 
 # constants
-const SPEED = 400.0 # float
-const JUMP_VELOCITY = -450.0 # float
+const SPEED = 500.0 # float
+const JUMP_VELOCITY = -500.0 # float
 
 # get global grav for rigidbody
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

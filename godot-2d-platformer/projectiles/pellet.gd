@@ -4,7 +4,7 @@ extends Area2D
 
 # variables
 var direction = Vector2.RIGHT
-var speed = 250.0
+var speed = 350.0
 
 # pellet physics
 func _physics_process(delta):
@@ -19,3 +19,7 @@ func _on_body_entered(body):
 
 	# destroy player on ANY collision
 	queue_free()
+
+# expiration timer
+func _on_timer_timeout() -> void:
+	queue_free() # delete on expiration
