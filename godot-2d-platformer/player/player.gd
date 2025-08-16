@@ -3,6 +3,9 @@
 # expose vars & funcs
 extends CharacterBody2D
 
+# ready nodes
+@onready var sfx_player = $SFXPlayer
+
 # constants
 const SPEED = 400.0 # float
 const JUMP_VELOCITY = -450.0 # float
@@ -12,6 +15,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # variables
 var jumps_left = 0 # init no jumps
+
+# paths
+const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
 
 # movement physics
 func _physics_process(delta):
@@ -27,6 +33,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
 		velocity.y = JUMP_VELOCITY # sudden jump velocity
 		jumps_left -= 1 # decr jumps
+		sfx_player.stream = JUMP_SOUND # set sfx
+		sfx_player.play() # play sound once
 		
 	# variable jump height
 	# hold jump button to go max, release to cut momentum

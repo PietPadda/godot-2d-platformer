@@ -1,3 +1,5 @@
+# mob/mob.gd
+
 extends CharacterBody2D
 
 # state machine enums
@@ -8,12 +10,16 @@ var player = null # var to hold reference to  player
 # ready nodes for use
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var ground_check_ray = $RayCast2D
+@onready var sfx_player = $SFXPlayer
 
 # variables
 var speed = 40.0 # walk speed
 var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
+
+# file paths
+const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
 
 # funct runs once when the mob is created
 func _ready():
@@ -109,6 +115,8 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 		# when stomped, the mobMob stops moving and gets squashed
 		set_physics_process(false) # completely stop the physics process
 		animated_sprite.play("squashed") # play death animation
+		sfx_player.stream = SQUASH_SOUND # set SFX
+		sfx_player.play() # play SFX
 		# add a small bounce for the player
 		body.velocity.y = body.JUMP_VELOCITY * 0.7 
 		
