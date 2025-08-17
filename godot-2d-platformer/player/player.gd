@@ -18,7 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_left = 0 # init no jumps
 var is_blocking = false # init non-blocking mode
 var is_slashing = false # init non-slashing mode
-var direction: int # init direction var
+var direction: float # init direction var
 var current_speed = SPEED # capture horisontal speed
 
 # paths
@@ -58,6 +58,7 @@ func _physics_process(delta):
 	# block on input
 	is_blocking = Input.is_action_pressed("block") and not is_slashing # true if input
 	shield.visible = is_blocking # visible if block held
+	$Shield/CollisionShape2D.disabled = not is_blocking # only hitbox when visible
 	
 	# player movement state
 	if is_slashing:
