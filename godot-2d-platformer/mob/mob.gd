@@ -140,25 +140,10 @@ func _on_side_detector_body_entered(body: Node2D) -> void:
 func _on_stomp_detector_body_entered(body: Node2D) -> void:
 	# player touch collision box and stomp state false
 	if body.is_in_group("player") and not is_stomped:
-		is_stomped = true # set to stomped state
-		
-		# when stomped, the mobMob stops moving and gets squashed
-		set_physics_process(false) # completely stop the physics process
-		animated_sprite.play("squashed") # play death animation
-		sfx_player.stream = SQUASH_SOUND # set SFX
-		sfx_player.play() # play SFX
-		shoot_timer.stop() # stop bullet firing
+		die() # call death on hit
 		
 		# add a small bounce for the player
 		body.velocity.y = body.JUMP_VELOCITY * 0.7 
-		
-		# disable detectors and collision box
-		$CollisionShape2D.set_deferred("disabled", true) # main solid body
-		$SideDetector.monitoring = false
-		$StompDetector.monitoring = false
-
-		# start timer to deletion
-		$Timer.start()
 
 # func called on timer one shot
 func _on_timer_timeout() -> void:
@@ -203,6 +188,27 @@ func _on_shoot_timer_timeout() -> void:
 	
 # public function the player can call
 func hit():
-	# reuse the same logic as being stomped
-	if not is_stomped:
-		_on_stomp_detector_body_entered(self)
+	die() # call death on hit
+
+# mob death handling
+func die():
+	# edge case: can't die twice
+	if is_stomped:
+		return # early exit
+	
+	is_stomped = true # set to stomped state
+		
+	# when stomped, the mobMob stops moving and gets squashed
+	set_physics_process(false) # completely stop the physics process
+	animated_sprite.play("squashed") # play death animation
+	sfx_player.stream = SQUASH_SOUND # set SFX
+	sfx_player.play() # play SFX
+	shoot_timer.stop() # stop bullet firing
+	
+	# disable detectors and collision box
+	$CollisionShape2D.set_deferred("disabled", true) # main solid body
+	$SideDetector.monitoring = false
+	$StompDetector.monitoring = false
+
+	# start timer to deletion
+	$Timer.start()
