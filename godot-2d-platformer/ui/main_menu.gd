@@ -9,3 +9,7 @@ const GAME_SCENE_PATH = "res://game.tscn"
 func _on_button_pressed() -> void:
 	# tell scene tree to switch from menu to main game scene
 	get_tree().change_scene_to_file(GAME_SCENE_PATH)
+
+# press Quit Game button
+func _on_quit_button_pressed() -> void:
+	get_tree().quit() # safe exit of application

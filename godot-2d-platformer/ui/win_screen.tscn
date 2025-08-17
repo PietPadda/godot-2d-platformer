@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://duaarxn2stwat"]
+[gd_scene load_steps=4 format=3 uid="uid://duaarxn2stwat"]
 
 [ext_resource type="AudioStream" uid="uid://bm6d8dcbuemc8" path="res://assets/audio/music/Final Fantasy IX - Fanfare.ogg" id="1_7dp3f"]
+[ext_resource type="Script" uid="uid://dw65nu3qcyypi" path="res://ui/win_screen.gd" id="1_n3yoe"]
 [ext_resource type="Texture2D" uid="uid://dvq065tmuu10h" path="res://assets/menu/menu_background.png" id="1_wex7o"]
 
 [node name="Control" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n3yoe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -20,18 +22,27 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wex7o")
 
-[node name="Label" type="Label" parent="."]
-layout_direction = 4
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7dp3f")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -534.5
-offset_top = -141.5
-offset_right = 526.5
-offset_bottom = 173.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.5
+offset_top = -177.5
+offset_right = 550.5
+offset_bottom = 177.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_direction = 4
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -41,6 +52,10 @@ text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_7dp3f")
-autoplay = true
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Return to Menu
+"
+
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
