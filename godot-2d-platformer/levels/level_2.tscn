@@ -2257,7 +2257,6 @@ sources/0 = SubResource("TileSetAtlasSource_h2yge")
 script = ExtResource("1_wcjpl")
 
 [node name="Player" parent="." instance=ExtResource("2_5orea")]
-visible = false
 position = Vector2(557, 92)
 
 [node name="TlleMap" type="TileMapLayer" parent="."]
@@ -2266,7 +2265,6 @@ tile_map_data = PackedByteArray("AABDABUAAAAgABcAAABCABUAAAAgABcAAABBABUAAAAgABc
 tile_set = SubResource("TileSet_1bvp3")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)

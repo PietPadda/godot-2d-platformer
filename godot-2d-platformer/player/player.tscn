@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=21 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dbqdbjlf5nrrk" path="res://assets/player/p1_front.png" id="2_rgyib"]
@@ -94,8 +94,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 13.0
+"speed": 20.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ieo8"]
+size = Vector2(43.1111, 52.4444)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
 size = Vector2(40, 87)
@@ -123,6 +126,12 @@ position = Vector2(71, 0)
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_32hag")
 
+[node name="Hitbox" type="Area2D" parent="SlashEffect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlashEffect/Hitbox"]
+position = Vector2(-3.77777, -5.77778)
+shape = SubResource("RectangleShape2D_2ieo8")
+
 [node name="Shield" type="Area2D" parent="."]
 position = Vector2(31, 20)
 collision_mask = 2
@@ -136,4 +145,5 @@ position = Vector2(3, -17.5)
 shape = SubResource("RectangleShape2D_8t03j")
 
 [connection signal="animation_finished" from="SlashEffect" to="." method="_on_slash_effect_animation_finished"]
+[connection signal="body_entered" from="SlashEffect/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]

@@ -200,3 +200,9 @@ func _on_shoot_timer_timeout() -> void:
 	pellet.global_position = muzzle.global_position
 	# tell pellet which direction
 	pellet.direction = Vector2(direction, 0) # use enemy's direction
+	
+# public function the player can call
+func hit():
+	# reuse the same logic as being stomped
+	if not is_stomped:
+		_on_stomp_detector_body_entered(self)

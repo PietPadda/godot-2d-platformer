@@ -23,6 +23,7 @@ var current_speed = SPEED # capture horisontal speed
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
+const SLASH_SOUND = preload("res://assets/audio/player/sword_slash.wav")
 
 # movement physics
 func _physics_process(delta):
@@ -53,6 +54,9 @@ func _physics_process(delta):
 		is_slashing = true # set slash mode
 		slash_effect.visible = is_slashing # visible if slash pressed
 		slash_effect.play("default") # play animation AT attack
+		$SlashEffect/Hitbox/CollisionShape2D.disabled = false # false disable = enable hitbox!
+		sfx_player.stream = SLASH_SOUND # set sfx
+		sfx_player.play() # play sound once
 	
 	# HORISONTAL MOVEMENT AND BLOCKING
 	# block on input
@@ -137,3 +141,10 @@ func _on_shield_area_entered(area: Area2D) -> void:
 func _on_slash_effect_animation_finished() -> void:
 	is_slashing = false # return control to player
 	slash_effect.visible = false # hide again
+	$SlashEffect/Hitbox/CollisionShape2D.disabled = true # disable hitbox!
+
+# slash hit enemy
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# check if enemies group entered slash hitbix AND if has hit function
+	if body.is_in_group("enemies") and body.has_method("hit"):
+		body.slash_hit()
