@@ -24,7 +24,7 @@ func _ready():
 
 # runs when coin emits signal
 func on_coin_collected(value): # pass global score
-	GameEvents.current_score += 1 # incr global score
+	GameEvents.current_score += value # incr global score
 	update_score_label() # update score ui
 	
 	# call the SFXPlayer to load COIN_SOUND
