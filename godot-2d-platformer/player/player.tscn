@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=20 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dbqdbjlf5nrrk" path="res://assets/player/p1_front.png" id="2_rgyib"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cshqpsr4l6y6u" path="res://assets/player/p1_walk01.png" id="7_yllr7"]
 [ext_resource type="Texture2D" uid="uid://di6dq1tv83if2" path="res://assets/player/p1_walk02.png" id="8_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://6hb552114ws1" path="res://assets/player/shield.png" id="10_8t03j"]
+[ext_resource type="Texture2D" uid="uid://don44e5wonytp" path="res://assets/player/sword_slash1.png" id="11_2ieo8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
 animations = [{
@@ -57,6 +58,45 @@ animations = [{
 radius = 33.0
 height = 88.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
+atlas = ExtResource("11_2ieo8")
+region = Rect2(0, 0, 40, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllr7"]
+atlas = ExtResource("11_2ieo8")
+region = Rect2(40, 0, 40, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("11_2ieo8")
+region = Rect2(80, 0, 40, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("11_2ieo8")
+region = Rect2(120, 0, 40, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32hag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebec5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
 size = Vector2(40, 87)
 
@@ -77,6 +117,12 @@ position_smoothing_speed = 3.0
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
 
+[node name="SlashEffect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(71, 0)
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_32hag")
+
 [node name="Shield" type="Area2D" parent="."]
 position = Vector2(31, 20)
 collision_mask = 2
@@ -89,4 +135,5 @@ texture = ExtResource("10_8t03j")
 position = Vector2(3, -17.5)
 shape = SubResource("RectangleShape2D_8t03j")
 
+[connection signal="animation_finished" from="SlashEffect" to="." method="_on_slash_effect_animation_finished"]
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]

@@ -6,6 +6,7 @@ extends CharacterBody2D
 # ready nodes
 @onready var sfx_player = $SFXPlayer
 @onready var shield = $Shield
+@onready var slash_effect = $SlashEffect
 
 # constants
 const SPEED = 500.0 # float
@@ -17,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # variables
 var jumps_left = 0 # init no jumps
 var is_blocking = false # init non-blocking mode
+var is_slashing = false # init non-slashing mode
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
@@ -43,57 +45,79 @@ func _physics_process(delta):
 	# hold jump button to go max, release to cut momentum
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 		velocity.y = JUMP_VELOCITY * 0 # stop all momentum
+		
+	# ATTACK
+	# attack on button and animation has reset
+	if Input.is_action_just_pressed("attack") and not is_slashing:
+		# stop running if on ground
+		if is_on_floor():
+			velocity.x = 0 # stop in tracks
+			
+		is_slashing = true # set slash mode
+		slash_effect.visible = is_slashing # visible if slash pressed
 	
 	# HORISONTAL MOVEMENT AND BLOCKING
-	# block on input
-	is_blocking = Input.is_action_pressed("block") # true if input
-	shield.visible = is_blocking # visible if block held
-	
 	# capture horisontal speed
 	var current_speed = SPEED
-	if is_blocking:
-		current_speed = SPEED * 0.4 # reduced speed when blocking
-	
+		
+	# block on input
+	is_blocking = Input.is_action_pressed("block") # true if input
+	if not is_slashing: # cannot block if slashing
+		shield.visible = is_blocking # visible if block held
+		
+		# modify speed if blocking
+		if is_blocking:
+			current_speed = SPEED * 0.4 # reduced speed when blocking
+		
 	# get left/right input
 	# Input.get_axis() returns a value between -1 and 1.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
-	# left/right movement
-	if direction != 0: # if dir applied
-		velocity.x = direction * current_speed # add hor speed
-	else: # no left/right input
-		velocity.x = 0 # stop if no left/right
+	if not is_slashing: # cannot move if slashing
+		# left/right movement
+		if direction != 0: # if dir applied
+			velocity.x = direction * current_speed # add hor speed
+		else: # no left/right input
+			velocity.x = 0 # stop if no left/right
 		
 	# ANIMATION & VISUALS
 	if direction != 0: # if dir applied
 		$AnimatedSprite2D.flip_h = direction < 0 # flip if going left
 	
 	# set player animation state
-	# jump/fall
+	# jump/fall animation
 	if not is_on_floor(): # if in air
 		$AnimatedSprite2D.play("jump")
-	elif direction != 0: # if running
+	# running animation
+	elif direction != 0:
 		$AnimatedSprite2D.play("run")
-	# TODO: Add blocking animation
-	else: # default
+	# slashing animation
+	elif is_slashing:
+		slash_effect.play("default")
+	# default animation
+	else:
 		$AnimatedSprite2D.play("idle") # idle anim
 		
-	# SHIELD SYNC
+	# SHIELD & ATTACK SYNC
 	# ensure shield positioned and flipped correctly
 	var shield_sprite = $Shield.get_node("Sprite2D")
 
-	# match shield to player sprite flip
+	# match animations to player sprite flip
 	shield_sprite.flip_h = $AnimatedSprite2D.flip_h
+	slash_effect.flip_h = $AnimatedSprite2D.flip_h
 
 	# update shield position to be front of  player
-	# get base distance of shield from player.
+	# get base distance of shield/slash from player.
 	var shield_offset_x = abs(shield.position.x)
+	var slash_offset_x = abs(slash_effect.position.x)
 	
-	# if player flipped left, move the shield to  left
+	# if player flipped left, flip the shield/slash to left
 	if $AnimatedSprite2D.flip_h:
 		shield.position.x = -shield_offset_x
+		slash_effect.position.x = -slash_offset_x
 	else: # else to right
 		shield.position.x = shield_offset_x
+		slash_effect.position.x = slash_offset_x
 		
 	# func that moves the char
 	move_and_slide()
@@ -106,8 +130,13 @@ func _ready():
 # player death animation
 func on_player_died():
 	set_physics_process(false) # stop processing physics
-	$AnimatedSprite2D.hide() #  hide the player.
+	$AnimatedSprite2D.hide() # hide the player
 
 # projectile enter shield hitbox
 func _on_shield_area_entered(area: Area2D) -> void:
 	area.queue_free() # destroys the "area" that entered the hitbox
+
+# slash finished
+func _on_slash_effect_animation_finished() -> void:
+	is_slashing = false # return control to player
+	slash_effect.visible = false # hide again
