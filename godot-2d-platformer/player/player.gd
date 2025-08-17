@@ -52,6 +52,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and not is_slashing:
 		is_slashing = true # set slash mode
 		slash_effect.visible = is_slashing # visible if slash pressed
+		slash_effect.play("default") # play animation AT attack
 	
 	# HORISONTAL MOVEMENT AND BLOCKING
 	# block on input
@@ -89,9 +90,6 @@ func _physics_process(delta):
 	# running animation
 	elif direction != 0:
 		$AnimatedSprite2D.play("run")
-	# slashing animation
-	elif is_slashing:
-		slash_effect.play("default")
 	# default animation
 	else:
 		$AnimatedSprite2D.play("idle") # idle anim
