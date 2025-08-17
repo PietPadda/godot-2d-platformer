@@ -6,6 +6,8 @@ extends CharacterBody2D # scene class
 @onready var sfx_player = $SFXPlayer
 @onready var shield = $Shield
 @onready var slash_effect = $SlashEffect
+@onready var dash_tap_timer = $DashTapTimer
+@onready var dash_duration_timer = $DashDurationTimer
 
 # constants
 const SPEED = 500.0 # float
@@ -20,13 +22,24 @@ var is_blocking = false # init non-blocking mode
 var is_slashing = false # init non-slashing mode
 var direction: float # init direction var
 var current_speed = SPEED # capture horisontal speed
+var dash_tap_count = 0 # count dash input attemps
+var last_dash_direction = 0 # track dash direction if double
+var is_dashing = false # init dash mode
+const DASH_SPEED = SPEED * 1.8 # dash speed!
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
 const SLASH_SOUND = preload("res://assets/audio/player/sword_slash.wav")
+const DASH_SOUND = preload("res://assets/audio/player/double_dash.wav")
 
-# movement physics
+# physics handling
 func _physics_process(delta):
+	# DASHING
+	# if dashing, dash logic takes over completely
+	if is_dashing:
+		move_and_slide()
+		return # skip all other physics for this frame
+		
 	# VERTICAL MOVEMENT
 	# add gravity 
 	if not is_on_floor(): # apply when not on floor
@@ -123,6 +136,32 @@ func _physics_process(delta):
 	# func that moves the char
 	move_and_slide()
 
+# non-physics handling
+func _unhandled_input(event):
+	# check for the right tap
+	if event.is_action_pressed("ui_right"):
+		# both were right and twice
+		if last_dash_direction == 1 and dash_tap_count == 1: 
+			# successful double-tap right
+			print("Dashing right!") # DEBUG
+			dash(1) # call single dash
+		else: # first attempt
+			last_dash_direction = 1 # incr
+			dash_tap_count = 1 # incr
+			dash_tap_timer.start() # timer till reset attempt
+
+	# check for the left tap
+	if event.is_action_pressed("ui_left"):
+		# both were left and twice
+		if last_dash_direction == -1 and dash_tap_count == 1:
+			# successful double-tap left
+			print("Dashing left!") # DEBUG
+			dash(-1) # call single dash
+		else: # first attempt
+			last_dash_direction = -1 # incr
+			dash_tap_count = 1 # incr
+			dash_tap_timer.start() # timer till reset attempt
+
 # called on node entering scene
 func _ready():
 	# link on_player_died func to global signal
@@ -146,7 +185,29 @@ func _on_slash_effect_animation_finished() -> void:
 # slash hit enemy
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# check if enemies group entered slash hitbix AND if has hit function
-	print(body.is_in_group("enemies")) # DEBUG
-	print(body.has_method("hit")) # DEBUG
 	if body.is_in_group("enemies") and body.has_method("hit"):
 		body.hit() # call the "enemy hit" logic
+
+# double dash func
+func dash(direction_of_dash):
+	# edge case: no dash while busy with another action
+	if is_blocking or is_slashing or is_dashing:
+		return # early return
+		
+	is_dashing = true # we're dashing!
+	velocity.y = 0 # we stop verticality and "jump" to side
+	velocity.x = direction_of_dash * DASH_SPEED # jump in dash dir
+	dash_duration_timer.start() # dash starts!
+	sfx_player.stream = DASH_SOUND # set sfx
+	sfx_player.play() # play sound once
+
+# reset double dash on timer
+func _on_dash_tap_timer_timeout() -> void:
+	# reset the tap attempt
+	dash_tap_count = 0
+	last_dash_direction = 0
+
+# finished dashing after timer
+func _on_dash_duration_timer_timeout() -> void:
+	is_dashing = false # dash is done
+	velocity.x = 0 # suddent stop!

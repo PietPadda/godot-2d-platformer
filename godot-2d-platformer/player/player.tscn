@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=26 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dbqdbjlf5nrrk" path="res://assets/player/p1_front.png" id="2_rgyib"]
-[ext_resource type="Texture2D" uid="uid://bahcjrlsducje" path="res://assets/player/p1_jump.png" id="3_8t03j"]
+[ext_resource type="Texture2D" uid="uid://cu7ytic65k756" path="res://assets/player/sammy_jump.png" id="3_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://xtofd15npatc" path="res://assets/player/p1_stand.png" id="3_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://v8n458x32rcq" path="res://assets/player/p1_walk03.png" id="4_8t03j"]
 [ext_resource type="Texture2D" uid="uid://bhlld6yepyw53" path="res://assets/player/p1_walk05.png" id="5_2ieo8"]
@@ -11,6 +11,26 @@
 [ext_resource type="Texture2D" uid="uid://di6dq1tv83if2" path="res://assets/player/p1_walk02.png" id="8_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://6hb552114ws1" path="res://assets/player/shield.png" id="10_8t03j"]
 [ext_resource type="Texture2D" uid="uid://don44e5wonytp" path="res://assets/player/sword_slash1.png" id="11_2ieo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("3_2ieo8")
+region = Rect2(125, 0, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("3_2ieo8")
+region = Rect2(250, 0, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("3_2ieo8")
+region = Rect2(0, 125, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
+atlas = ExtResource("3_2ieo8")
+region = Rect2(125, 125, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
+atlas = ExtResource("3_2ieo8")
+region = Rect2(250, 125, 125, 125)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkbax"]
 animations = [{
@@ -24,11 +44,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_8t03j")
+"texture": SubResource("AtlasTexture_32hag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +140,9 @@ script = ExtResource("1_rkbax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rkbax")
-animation = &"run"
+animation = &"jump"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 3)
@@ -145,6 +179,16 @@ texture = ExtResource("10_8t03j")
 position = Vector2(3, -17.5)
 shape = SubResource("RectangleShape2D_8t03j")
 
+[node name="DashTapTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashDurationTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="animation_finished" from="SlashEffect" to="." method="_on_slash_effect_animation_finished"]
 [connection signal="body_entered" from="SlashEffect/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
+[connection signal="timeout" from="DashTapTimer" to="." method="_on_dash_tap_timer_timeout"]
+[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
