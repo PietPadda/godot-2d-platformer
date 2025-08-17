@@ -146,5 +146,7 @@ func _on_slash_effect_animation_finished() -> void:
 # slash hit enemy
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# check if enemies group entered slash hitbix AND if has hit function
+	print(body.is_in_group("enemies")) # DEBUG
+	print(body.has_method("hit")) # DEBUG
 	if body.is_in_group("enemies") and body.has_method("hit"):
-		body.slash_hit()
+		body.hit() # call the "enemy hit" logic

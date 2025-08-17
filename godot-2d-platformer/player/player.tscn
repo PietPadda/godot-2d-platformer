@@ -127,6 +127,7 @@ scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_32hag")
 
 [node name="Hitbox" type="Area2D" parent="SlashEffect"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlashEffect/Hitbox"]
 position = Vector2(-3.77777, -5.77778)
