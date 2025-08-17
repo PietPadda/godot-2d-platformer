@@ -1,7 +1,6 @@
 # player/player.gd
 
-# expose vars & funcs
-extends CharacterBody2D
+extends CharacterBody2D # scene class
 
 # ready nodes
 @onready var sfx_player = $SFXPlayer
@@ -19,6 +18,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_left = 0 # init no jumps
 var is_blocking = false # init non-blocking mode
 var is_slashing = false # init non-slashing mode
+var direction: int # init direction var
+var current_speed = SPEED # capture horisontal speed
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
@@ -49,31 +50,28 @@ func _physics_process(delta):
 	# ATTACK
 	# attack on button and animation has reset
 	if Input.is_action_just_pressed("attack") and not is_slashing:
-		# stop running if on ground
-		if is_on_floor():
-			velocity.x = 0 # stop in tracks
-			
 		is_slashing = true # set slash mode
 		slash_effect.visible = is_slashing # visible if slash pressed
 	
 	# HORISONTAL MOVEMENT AND BLOCKING
-	# capture horisontal speed
-	var current_speed = SPEED
-		
 	# block on input
-	is_blocking = Input.is_action_pressed("block") # true if input
-	if not is_slashing: # cannot block if slashing
-		shield.visible = is_blocking # visible if block held
-		
+	is_blocking = Input.is_action_pressed("block") and not is_slashing # true if input
+	shield.visible = is_blocking # visible if block held
+	
+	# player movement state
+	if is_slashing:
+		# stop in tracks
+		velocity.x = 0
+	else: # not attacking
+		current_speed = SPEED # default movement speed
 		# modify speed if blocking
 		if is_blocking:
 			current_speed = SPEED * 0.4 # reduced speed when blocking
+			
+		# get left/right input
+		# Input.get_axis() returns a value between -1 and 1.
+		direction = Input.get_axis("ui_left", "ui_right")
 		
-	# get left/right input
-	# Input.get_axis() returns a value between -1 and 1.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	
-	if not is_slashing: # cannot move if slashing
 		# left/right movement
 		if direction != 0: # if dir applied
 			velocity.x = direction * current_speed # add hor speed
