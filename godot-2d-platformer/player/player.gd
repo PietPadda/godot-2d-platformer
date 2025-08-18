@@ -31,6 +31,7 @@ const DASH_SPEED = SPEED * 1.8 # dash speed!
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
 const SLASH_SOUND = preload("res://assets/audio/player/sword_slash.wav")
 const DASH_SOUND = preload("res://assets/audio/player/double_dash.wav")
+const HURT_SOUND = preload("res://assets/audio/player/hurt.wav")
 
 # physics handling
 func _physics_process(delta):
@@ -164,8 +165,25 @@ func _unhandled_input(event):
 
 # called on node entering scene
 func _ready():
-	# link on_player_died func to global signal
+	# link LOCAL func to GLOBAL SIGNAL
 	GameEvents.player_died.connect(on_player_died)
+	GameEvents.deal_damage_to_player.connect(take_damage)
+
+# player take damage
+func take_damage(amount):
+	# reduce global health
+	GameEvents.current_health -= amount
+	# announce the health has changed
+	GameEvents.health_changed.emit(GameEvents.current_health)
+	
+	# check if player has run out of health
+	if GameEvents.current_health <= 0: # no health
+		# if so, emit player_died signal
+		GameEvents.player_died.emit() # player DIED
+	else:
+		sfx_player.stream = HURT_SOUND # set sfx
+		sfx_player.play() # play sound once
+		# TODO: make the player flash for a moment
 
 # player death animation
 func on_player_died():

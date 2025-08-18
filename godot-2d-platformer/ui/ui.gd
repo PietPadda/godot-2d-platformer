@@ -26,6 +26,8 @@ func _ready():
 	# loop through all  children of HealthBar (our TextureRects)
 	for heart in health_bar.get_children(): # get each child (heart)
 		hearts.append(heart) # add each child to array
+	GameEvents.health_changed.connect(update_health_bar) # health_changed called on signal
+	update_health_bar(GameEvents.current_health) # update health bar
 
 # runs when coin emits signal
 func on_coin_collected(value): # pass global score
@@ -51,3 +53,14 @@ func on_animation_finished(anim_name):
 	if anim_name == "fade_to_black":
 		# now reload the scene, after screen is black
 		get_tree().reload_current_scene()
+
+# health changeed
+func update_health_bar(new_health):
+	# loop through array of hearts
+	for i in range(hearts.size()):
+		# show heart if index LESS than new health
+		if i < new_health:
+			hearts[i].visible = true # checks to show
+		# otherwise hide it
+		else:
+			hearts[i].visible = false # take damage

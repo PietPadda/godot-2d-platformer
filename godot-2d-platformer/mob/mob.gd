@@ -128,15 +128,15 @@ func chase_state(delta):
 	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
 		shoot_timer.start() # restart the timer
 
-# player lands on enemy head
+# player touches enemy anywhere else
 func _on_side_detector_body_entered(body: Node2D) -> void:
 		# player touch collision box and stomp state false
 	if body.is_in_group("player") and not is_stomped:
 		# player hit from the side
-		# emit signal for player death
-		GameEvents.player_died.emit()
+		# emit signal for player damage
+		GameEvents.deal_damage_to_player.emit(1)
 
-# player touches enemy anywhere else
+# player lands on enemy head
 func _on_stomp_detector_body_entered(body: Node2D) -> void:
 	# player touch collision box and stomp state false
 	if body.is_in_group("player") and not is_stomped:
