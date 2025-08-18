@@ -183,10 +183,10 @@ radius = 13.0
 height = 46.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pirjb"]
-size = Vector2(27.5, 6.5)
+size = Vector2(23.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(27.5, 41.5)
+size = Vector2(27.5, 47.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pirjb"]
 radius = 332.014
@@ -212,14 +212,14 @@ target_position = Vector2(0, 82)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2(-0.25, -11.75)
+position = Vector2(-0.25, -14.75)
 shape = SubResource("RectangleShape2D_pirjb")
 
 [node name="SideDetector" type="Area2D" parent="."]
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideDetector"]
-position = Vector2(-0.25, 12.25)
+position = Vector2(-0.25, 9.25)
 shape = SubResource("RectangleShape2D_mixeo")
 
 [node name="DeathTimer" type="Timer" parent="."]

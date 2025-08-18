@@ -300,6 +300,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlashEffect/Hitbox"]
 position = Vector2(-3.77777, -5.77778)
 shape = SubResource("RectangleShape2D_2ieo8")
+disabled = true
 
 [node name="Shield" type="Area2D" parent="."]
 position = Vector2(17, 9)

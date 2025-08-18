@@ -26,6 +26,10 @@ func _ready():
 	# loop through all  children of HealthBar (our TextureRects)
 	for heart in health_bar.get_children(): # get each child (heart)
 		hearts.append(heart) # add each child to array
+		
+	# wait one frame to let initialisation occur
+	# otherwise UI won't update!
+	await get_tree().process_frame # wait ONE frame
 	GameEvents.health_changed.connect(update_health_bar) # health_changed called on signal
 	update_health_bar(GameEvents.current_health) # update health bar
 
