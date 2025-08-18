@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0y51a0ihepn3"]
+
+[ext_resource type="Texture2D" uid="uid://bnrex54ktdtdd" path="res://assets/items/powerup_speed.png" id="1_35jaw"]
+[ext_resource type="Script" uid="uid://domshws5r42q" path="res://collectibles/speed_boost.gd" id="1_d3gak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3gak"]
+radius = 77.0065
+
+[node name="SpeedBoost" type="Area2D"]
+script = ExtResource("1_d3gak")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_35jaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3gak")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,9 +8,9 @@ extends CharacterBody2D # scene class
 @onready var slash_effect = $SlashEffect
 @onready var dash_tap_timer = $DashTapTimer
 @onready var dash_duration_timer = $DashDurationTimer
+@onready var powerup_timer = $PowerupTimer
 
 # constants
-const SPEED = 350.0 # float
 const JUMP_VELOCITY = -500.0 # float
 
 # get global grav for rigidbody
@@ -25,13 +25,16 @@ var current_speed = SPEED # capture horisontal speed
 var dash_tap_count = 0 # count dash input attemps
 var last_dash_direction = 0 # track dash direction if double
 var is_dashing = false # init dash mode
-const DASH_SPEED = SPEED * 2.5 # dash speed!
+var DASH_multiplier = 2.5 # dash speed!
+var SPEED = 350.0 # float
+var speed_modifier = 1.0 # 100% speed, our default
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")
 const SLASH_SOUND = preload("res://assets/audio/player/sword_slash.wav")
 const DASH_SOUND = preload("res://assets/audio/player/double_dash.wav")
 const HURT_SOUND = preload("res://assets/audio/player/hurt.wav")
+const SPEED_POWERUP_SOUND = preload("res://assets/audio/player/speed_powerup.wav")
 
 # physics handling
 func _physics_process(delta):
@@ -94,7 +97,7 @@ func _physics_process(delta):
 		
 		# left/right movement
 		if direction != 0: # if dir applied
-			velocity.x = direction * current_speed # add hor speed
+			velocity.x = direction * current_speed * speed_modifier # add hor speed
 		else: # no left/right input
 			velocity.x = 0 # stop if no left/right
 		
@@ -168,6 +171,7 @@ func _ready():
 	# link LOCAL func to GLOBAL SIGNAL
 	GameEvents.player_died.connect(on_player_died)
 	GameEvents.deal_damage_to_player.connect(take_damage)
+	GameEvents.speed_boost_collected.connect(on_speed_boost_collected)
 
 # player take damage
 func take_damage(amount):
@@ -220,7 +224,7 @@ func dash(direction_of_dash):
 		
 	is_dashing = true # we're dashing!
 	velocity.y = 0 # we stop verticality and "jump" to side
-	velocity.x = direction_of_dash * DASH_SPEED # jump in dash dir
+	velocity.x = direction_of_dash * SPEED * DASH_multiplier # jump in dash dir
 	dash_duration_timer.start() # dash starts!
 	sfx_player.stream = DASH_SOUND # set sfx
 	sfx_player.play() # play sound once
@@ -235,3 +239,15 @@ func _on_dash_tap_timer_timeout() -> void:
 func _on_dash_duration_timer_timeout() -> void:
 	is_dashing = false # dash is done
 	velocity.x = 0 # suddent stop!
+	
+# speedboost powerup
+func on_speed_boost_collected() -> void:
+	speed_modifier = 1.6 # 160% speed!
+	powerup_timer.start() # start timer
+	sfx_player.stream = SPEED_POWERUP_SOUND # set sfx
+	sfx_player.play() # play sound once
+	# TODO: add a visual effect!
+
+# powerup expired
+func _on_powerup_timer_timeout() -> void:
+	speed_modifier = 1.0 # reset to normal

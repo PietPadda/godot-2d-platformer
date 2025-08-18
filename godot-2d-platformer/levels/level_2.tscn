@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cfnirnfk8vpbv"]
+[gd_scene load_steps=16 format=4 uid="uid://cfnirnfk8vpbv"]
 
 [ext_resource type="Script" uid="uid://cule4gwmbvlyw" path="res://levels/level_2.gd" id="1_wcjpl"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_5orea"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_itbe0"]
 [ext_resource type="PackedScene" uid="uid://dt5eanjk5lw0q" path="res://world_elements/moving_platform.tscn" id="12_hbb88"]
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_he6wg"]
+[ext_resource type="PackedScene" uid="uid://d0y51a0ihepn3" path="res://collectibles/speed_boost.tscn" id="13_wcjpl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_0ourt")
@@ -2495,3 +2496,9 @@ position = Vector2(4735, 284)
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("12_hbb88")]
 position = Vector2(4735, 284)
+
+[node name="SpeedBoost" parent="." instance=ExtResource("13_wcjpl")]
+position = Vector2(6497, 257)
+
+[node name="SpeedBoost2" parent="." instance=ExtResource("13_wcjpl")]
+position = Vector2(65, 257)

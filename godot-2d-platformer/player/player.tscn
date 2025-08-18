@@ -323,8 +323,13 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
+[node name="PowerupTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_finished" from="SlashEffect" to="." method="_on_slash_effect_animation_finished"]
 [connection signal="body_entered" from="SlashEffect/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
 [connection signal="timeout" from="DashTapTimer" to="." method="_on_dash_tap_timer_timeout"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]
