@@ -26,11 +26,14 @@ func _ready():
 	# loop through all  children of HealthBar (our TextureRects)
 	for heart in health_bar.get_children(): # get each child (heart)
 		hearts.append(heart) # add each child to array
-		
-	# wait one frame to let initialisation occur
-	# otherwise UI won't update!
-	await get_tree().process_frame # wait ONE frame
-	GameEvents.health_changed.connect(update_health_bar) # health_changed called on signal
+	
+	# wait for game ready to update (prevent race conditions)
+	GameEvents.game_ready.connect(on_game_ready) # all ready and init
+	GameEvents.health_changed.connect(update_health_bar) # still update health
+
+# runs ONLY when the 'game_ready' signal is emitted
+func on_game_ready():
+	update_score_label() # update score
 	update_health_bar(GameEvents.current_health) # update health bar
 
 # runs when coin emits signal

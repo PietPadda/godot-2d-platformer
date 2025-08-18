@@ -267,7 +267,7 @@ animations = [{
 size = Vector2(43.1111, 52.4444)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
-size = Vector2(121.429, 371.429)
+size = Vector2(200.715, 490)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rkbax")
@@ -311,15 +311,16 @@ collision_mask = 2
 texture = ExtResource("10_8t03j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
-position = Vector2(-50, -89.2857)
+position = Vector2(-10.3572, -30.0001)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8t03j")
 
 [node name="DashTapTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.15
 one_shot = true
 
 [node name="DashDurationTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [connection signal="animation_finished" from="SlashEffect" to="." method="_on_slash_effect_animation_finished"]

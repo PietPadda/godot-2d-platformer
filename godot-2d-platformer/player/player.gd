@@ -10,7 +10,7 @@ extends CharacterBody2D # scene class
 @onready var dash_duration_timer = $DashDurationTimer
 
 # constants
-const SPEED = 500.0 # float
+const SPEED = 350.0 # float
 const JUMP_VELOCITY = -500.0 # float
 
 # get global grav for rigidbody
@@ -25,7 +25,7 @@ var current_speed = SPEED # capture horisontal speed
 var dash_tap_count = 0 # count dash input attemps
 var last_dash_direction = 0 # track dash direction if double
 var is_dashing = false # init dash mode
-const DASH_SPEED = SPEED * 1.8 # dash speed!
+const DASH_SPEED = SPEED * 2.5 # dash speed!
 
 # paths
 const JUMP_SOUND = preload("res://assets/audio/player/jump.wav")

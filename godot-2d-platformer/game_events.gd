@@ -5,14 +5,16 @@ extends Node
 # global signals (library store, not actually used!)
 @warning_ignore("unused_signal") # ignore next warning
 signal coin_collected(value) # signal carries value forward
-@warning_ignore("unused_signal") # ignore next warning
+@warning_ignore("unused_signal")
 signal player_died
-@warning_ignore("unused_signal") # ignore next warning
+@warning_ignore("unused_signal")
 signal level_finished
-@warning_ignore("unused_signal") # ignore next warning
+@warning_ignore("unused_signal")
 signal health_changed(new_health)
-@warning_ignore("unused_signal") # ignore next warning
+@warning_ignore("unused_signal")
 signal deal_damage_to_player(amount)
+@warning_ignore("unused_signal")
+signal game_ready
 
 # global variables
 var current_score = 0 # init 0

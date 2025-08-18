@@ -26,6 +26,9 @@ func _ready():
 	GameEvents.level_finished.connect(on_level_finished)
 	# load current level instance
 	load_level()
+	
+	# announce all initialization complete
+	GameEvents.game_ready.emit()
 
 # _unhandled_input is checked after normal game input
 # best place for pause-like actions
