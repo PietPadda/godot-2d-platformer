@@ -60,16 +60,22 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="Heart" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("2_ks8t7")
+expand_mode = 1
 
 [node name="Heart2" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("2_ks8t7")
+expand_mode = 1
 
 [node name="Heart3" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("2_ks8t7")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="."]
 offset_right = 180.0
