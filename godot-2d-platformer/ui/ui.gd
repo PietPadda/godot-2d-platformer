@@ -6,8 +6,10 @@ extends CanvasLayer
 @onready var animation_player = $AnimationPlayer
 @onready var score_label = $Label
 @onready var sfx_player = $SFXPlayer
+@onready var health_bar = $Control/HealthBar
 
 # variables
+var hearts = [] # init empty hearts array
 
 # paths
 const COIN_SOUND = preload("res://assets/audio/sounds/coin.wav")
@@ -21,6 +23,9 @@ func _ready():
 	GameEvents.player_died.connect(on_player_died)
 	# make UI listen for animation_finished local signal
 	animation_player.animation_finished.connect(on_animation_finished)
+	# loop through all  children of HealthBar (our TextureRects)
+	for heart in health_bar.get_children(): # get each child (heart)
+		hearts.append(heart) # add each child to array
 
 # runs when coin emits signal
 func on_coin_collected(value): # pass global score

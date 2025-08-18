@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0in6ytgwo8rc"]
+[gd_scene load_steps=6 format=3 uid="uid://b0in6ytgwo8rc"]
 
 [ext_resource type="Script" uid="uid://dnrlmyj4hrptn" path="res://ui/ui.gd" id="1_52ckw"]
+[ext_resource type="Texture2D" uid="uid://cyxvywu0ic1lg" path="res://assets/ui/heart_health.png" id="2_ks8t7"]
 
 [sub_resource type="Animation" id="Animation_ks8t7"]
 length = 0.001
@@ -40,6 +41,35 @@ _data = {
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_52ckw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Heart" type="TextureRect" parent="Control/HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+
+[node name="Heart2" type="TextureRect" parent="Control/HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+
+[node name="Heart3" type="TextureRect" parent="Control/HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 180.0
