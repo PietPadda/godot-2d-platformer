@@ -158,7 +158,7 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		# first pellet has reduced timer for responsiveness
 		if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
 			# override the timer on first detection with short time
-			shoot_timer.start(0.5)
+			shoot_timer.start(2)
 
 # func called on player exiting the visibility radius
 func _on_player_detector_body_exited(body: Node2D) -> void:
@@ -211,4 +211,4 @@ func die():
 	$StompDetector.monitoring = false
 
 	# start timer to deletion
-	$Timer.start()
+	$DeathTimer.start()

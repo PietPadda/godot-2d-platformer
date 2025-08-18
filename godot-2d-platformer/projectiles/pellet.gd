@@ -15,9 +15,9 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	# hit the player, tell game they died
 	if body.is_in_group("player"):
-		GameEvents.player_died.emit()
+		GameEvents.deal_damage_to_player.emit(1) # do damage
 
-	# destroy player on ANY collision
+	# destroy pellet on ANY collision
 	queue_free()
 
 # expiration timer

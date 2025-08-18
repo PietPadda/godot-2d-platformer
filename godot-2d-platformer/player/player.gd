@@ -171,16 +171,22 @@ func _ready():
 
 # player take damage
 func take_damage(amount):
+	print("--- take_damage was called! ---") # DEBUG
+	print("Health BEFORE damage: ", GameEvents.current_health) # DEBUG
+	
 	# reduce global health
 	GameEvents.current_health -= amount
+	print("Health AFTER damage: ", GameEvents.current_health) # DEBUG
 	# announce the health has changed
 	GameEvents.health_changed.emit(GameEvents.current_health)
 	
 	# check if player has run out of health
 	if GameEvents.current_health <= 0: # no health
 		# if so, emit player_died signal
+		print("Health is 0 or less! Emitting player_died signal.") # DEBUG
 		GameEvents.player_died.emit() # player DIED
 	else:
+		print("Player was hurt but is still alive.") # DEBUG
 		sfx_player.stream = HURT_SOUND # set sfx
 		sfx_player.play() # play sound once
 		# TODO: make the player flash for a moment

@@ -65,6 +65,84 @@ layout_mode = 2
 texture = ExtResource("2_ks8t7")
 expand_mode = 1
 
+[node name="Heart4" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart5" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart6" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart7" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart8" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart9" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart10" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart11" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart12" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart13" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart14" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart15" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
+[node name="Heart16" type="TextureRect" parent="Control/HealthBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_ks8t7")
+expand_mode = 1
+
 [node name="Heart2" type="TextureRect" parent="Control/HealthBar"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2

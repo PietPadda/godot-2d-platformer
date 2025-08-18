@@ -20,4 +20,4 @@ var current_health = MAX_HEALTH # player hp tracker
 
 # global constants
 	# PLAYER
-const MAX_HEALTH = 3 # init player hp
+const MAX_HEALTH = 6 # init player hp
