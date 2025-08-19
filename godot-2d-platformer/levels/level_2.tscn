@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cfnirnfk8vpbv"]
+[gd_scene load_steps=17 format=4 uid="uid://cfnirnfk8vpbv"]
 
 [ext_resource type="Script" uid="uid://cule4gwmbvlyw" path="res://levels/level_2.gd" id="1_wcjpl"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_5orea"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dt5eanjk5lw0q" path="res://world_elements/moving_platform.tscn" id="12_hbb88"]
 [ext_resource type="PackedScene" uid="uid://bycugg8660cyh" path="res://enemies/bat.tscn" id="13_5orea"]
 [ext_resource type="PackedScene" uid="uid://d0y51a0ihepn3" path="res://collectibles/speed_boost.tscn" id="13_wcjpl"]
+[ext_resource type="PackedScene" uid="uid://cqxem3pcyxoxe" path="res://collectibles/health_pickup.tscn" id="14_5orea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_0ourt")
@@ -2417,28 +2418,37 @@ position = Vector2(6497, 257)
 position = Vector2(65, 257)
 
 [node name="Bat" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(1424, 267)
+position = Vector2(1424, 84)
 
 [node name="Bat2" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(1974, 267)
+position = Vector2(1974, 84)
 
 [node name="Bat3" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(2671, 267)
+position = Vector2(2671, 84)
 
 [node name="Bat4" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(3416, 267)
+position = Vector2(3416, 84)
+
+[node name="Bat10" parent="." instance=ExtResource("13_5orea")]
+position = Vector2(3277, 78)
 
 [node name="Bat5" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(3950, 267)
+position = Vector2(3950, 84)
 
 [node name="Bat6" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(4455, 267)
+position = Vector2(4455, 84)
 
 [node name="Bat7" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(5905, 267)
+position = Vector2(5905, 84)
 
 [node name="Bat8" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(6749, 267)
+position = Vector2(6749, 84)
 
 [node name="Bat9" parent="." instance=ExtResource("13_5orea")]
-position = Vector2(6328, 267)
+position = Vector2(6328, 84)
+
+[node name="HealthPickup" parent="." instance=ExtResource("14_5orea")]
+position = Vector2(2298, 213)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("14_5orea")]
+position = Vector2(6726, 213)

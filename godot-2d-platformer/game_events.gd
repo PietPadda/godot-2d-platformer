@@ -20,6 +20,8 @@ signal level_finished
 signal coin_collected(value) # signal carries value forward
 @warning_ignore("unused_signal")
 signal speed_boost_collected
+@warning_ignore("unused_signal")
+signal player_healed(amount) # carry the amount of health to restore
 
 # global variables
 var current_score = 0 # init 0

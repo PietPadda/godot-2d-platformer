@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=18 format=4 uid="uid://wohnj7hu8qka"]
 
 [ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://levels/level_1.gd" id="1_sof0w"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_ggavl"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://csxhk8skerwf6" path="res://assets/audio/music/w2 Human 2.ogg" id="12_nmsli"]
 [ext_resource type="PackedScene" uid="uid://w4x2qiodjxjd" path="res://enemies/skeleton.tscn" id="13_nmsli"]
 [ext_resource type="PackedScene" uid="uid://bycugg8660cyh" path="res://enemies/bat.tscn" id="14_betor"]
+[ext_resource type="PackedScene" uid="uid://cqxem3pcyxoxe" path="res://collectibles/health_pickup.tscn" id="15_vjtdm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_ubhxj")
@@ -2422,4 +2423,7 @@ position = Vector2(-1560, 266)
 position = Vector2(-2244, 266)
 
 [node name="Bat" parent="." instance=ExtResource("14_betor")]
-position = Vector2(-1349, 272)
+position = Vector2(-1323, 111)
+
+[node name="HealthPickup" parent="." instance=ExtResource("15_vjtdm")]
+position = Vector2(-1883, 170)

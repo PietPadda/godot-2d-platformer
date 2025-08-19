@@ -55,14 +55,6 @@ func _physics_process(delta):
 			if has_node("ShootComponent"):
 				$ShootComponent.process_shooting()
 
-# player touches enemy anywhere else
-func _on_side_detector_body_entered(body: Node2D) -> void:
-		# player touch collision box and stomp state false
-	if body.is_in_group("player") and not is_stomped:
-		# player hit from the side
-		# emit signal for player damage
-		GameEvents.deal_damage_to_player.emit(1)
-
 # player lands on enemy head
 func _on_stomp_detector_body_entered(body: Node2D) -> void:
 	# player touch collision box and stomp state false

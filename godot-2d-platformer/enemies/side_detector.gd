@@ -1,23 +1,21 @@
-# traps/spikes.gd
+# enemies/side_detector.gd
 
 extends Area2D
 
 # ready nodes
 @onready var damage_timer = $DamageTimer
 
-# run when body touches spikes
+# player enter side detector
 func _on_body_entered(body: Node2D) -> void:
-	# check if player entered
 	if body.is_in_group("player"):
-		GameEvents.deal_damage_to_player.emit(1) # emit global signal
+		GameEvents.deal_damage_to_player.emit(1) # deal damage
 		damage_timer.start() # start dmg timer
 
+# player exit side detector
 func _on_body_exited(body: Node2D) -> void:
-	# check if player has left
 	if body.is_in_group("player"):
-		damage_timer.stop() # stop dmg timer
+		damage_timer.start() # start dmg timer
 
-# dmg timer reset
+# damage timer tick
 func _on_damage_timer_timeout() -> void:
-	# try to do dmg after each timer reset
-	GameEvents.deal_damage_to_player.emit(1)
+	GameEvents.deal_damage_to_player.emit(1) # deal damage per tick

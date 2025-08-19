@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr58rfn6mjrfd"]
+[gd_scene load_steps=8 format=3 uid="uid://cr58rfn6mjrfd"]
 
 [ext_resource type="Script" uid="uid://c6nuondjp2227" path="res://enemies/base_enemy.gd" id="1_pirjb"]
 [ext_resource type="SpriteFrames" uid="uid://bnt5ii47nsd55" path="res://enemies/skeleton.tres" id="2_bfj6p"]
+[ext_resource type="Script" uid="uid://cej6cs0t3yc30" path="res://enemies/side_detector.gd" id="3_b5ht1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rxfc"]
 radius = 13.0
@@ -42,14 +43,13 @@ shape = SubResource("RectangleShape2D_pirjb")
 
 [node name="SideDetector" type="Area2D" parent="."]
 scale = Vector2(2, 2)
+script = ExtResource("3_b5ht1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideDetector"]
 position = Vector2(-0.25, 10)
 shape = SubResource("RectangleShape2D_mixeo")
 
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="DamageTimer" type="Timer" parent="SideDetector"]
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 
@@ -58,15 +58,21 @@ shape = SubResource("CircleShape2D_pirjb")
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
 
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(38, 0)
+
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
 
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(38, 0)
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="body_entered" from="StompDetector" to="." method="_on_stomp_detector_body_entered"]
-[connection signal="body_entered" from="SideDetector" to="." method="_on_side_detector_body_entered"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="SideDetector" to="SideDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="SideDetector" to="SideDetector" method="_on_body_exited"]
+[connection signal="timeout" from="SideDetector/DamageTimer" to="SideDetector" method="_on_damage_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_timer_timeout"]
