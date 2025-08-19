@@ -52,5 +52,5 @@ func _on_shoot_timer_timeout() -> void:
 	# set starting position to Muzzle's global position
 	pellet.global_position = muzzle.global_position
 	# tell pellet which direction
-	pellet.direction = Vector2(direction, 0) # use enemy's direction
+	pellet.direction = Vector2(body.direction, 0) # use enemy's direction via body
 	

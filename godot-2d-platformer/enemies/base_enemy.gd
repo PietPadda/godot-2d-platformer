@@ -17,6 +17,7 @@ var speed = 40.0 # walk speed
 var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
+var active_projectile = null # project live init
 
 # file paths
 const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
@@ -105,6 +106,10 @@ func die():
 	# tell components to stop their actions
 	if has_node("ShootComponent"):
 		$ShootComponent.stop_shooting()
+		
+	# clean up our active projectile if one exists
+	if is_instance_valid(active_projectile):
+		active_projectile.queue_free()
 		
 	# when stomped, the mobMob stops moving and gets squashed
 	set_physics_process(false) # completely stop the physics process
