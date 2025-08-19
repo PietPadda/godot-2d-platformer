@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bycugg8660cyh"]
 
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://enemies/base_enemy.tscn" id="1_nu3at"]
-[ext_resource type="Script" uid="uid://ks05rnaliliv" path="res://enemies/bat.gd" id="2_mtn0m"]
+[ext_resource type="PackedScene" uid="uid://bnmdim26gvqlx" path="res://enemies/components/fly_component.tscn" id="2_tc28o"]
 [ext_resource type="SpriteFrames" uid="uid://xpyr7hib0pc5" path="res://enemies/bat.tres" id="3_tc28o"]
 
 [node name="Bat" instance=ExtResource("1_nu3at")]
-script = ExtResource("2_mtn0m")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="FlyComponent" parent="." index="0" instance=ExtResource("2_tc28o")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("3_tc28o")
 animation = &"squashed"
 
-[node name="RayCast2D" parent="." index="2"]
+[node name="RayCast2D" parent="." index="3"]
 enabled = false

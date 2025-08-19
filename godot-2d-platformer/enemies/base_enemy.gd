@@ -43,13 +43,18 @@ func _physics_process(delta):
 	# state machine
 	match state:
 		PATROL:
-			# if have WalkComponent, tell it to patrol
+			# if have  Fly/WalkComponent, tell it to patrol
 			if has_node("WalkComponent"):
 				$WalkComponent.patrol(delta)
+			elif has_node("FlyComponent"):
+				$FlyComponent.chase(delta, player)
 		CHASE:
-			# if have a WalkComponent, tell it to chase
+			# if have a Fly/WalkComponent, tell it to chase
 			if has_node("WalkComponent"):
 				$WalkComponent.chase(delta, player)
+			elif has_node("FlyComponent"):
+				$FlyComponent.chase(delta, player)
+			
 			# if have a ShootComponent, tell it to consider shooting
 			if has_node("ShootComponent"):
 				$ShootComponent.process_shooting()

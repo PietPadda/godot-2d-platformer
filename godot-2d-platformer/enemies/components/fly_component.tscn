@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnmdim26gvqlx"]
+
+[ext_resource type="Script" uid="uid://dqmjmmgf2j1pd" path="res://enemies/components/fly_component.gd" id="1_4mnju"]
+
+[node name="FlyComponent" type="Node"]
+script = ExtResource("1_4mnju")
