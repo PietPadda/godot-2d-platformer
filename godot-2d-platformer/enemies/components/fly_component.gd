@@ -17,7 +17,7 @@ func _ready():
 func patrol(delta):
 	# when patrolling, bat will just hover in place
 	body.velocity = body.velocity.lerp(Vector2.ZERO, 0.05) # hover
-	animated_sprite.play("fly") # animation
+	animated_sprite.play("sleep") # animation
 	body.move_and_slide() # move
 
 func chase(delta, player_ref):

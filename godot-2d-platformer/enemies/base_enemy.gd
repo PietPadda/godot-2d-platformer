@@ -11,20 +11,15 @@ var player = null # var to hold reference to  player
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var ground_check_ray = $RayCast2D
 @onready var sfx_player = $SFXPlayer
-@onready var shoot_timer = $ShootTimer
-@onready var muzzle = $Muzzle
 
 # variables
 var speed = 40.0 # walk speed
 var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
-var active_projectile = null # project live init
 
 # file paths
 const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
-const SHOOT_SOUND = preload("res://assets/audio/projectiles/pellet.wav")
-const PELLET_SCENE = preload("res://projectiles/pellet.tscn")
 
 # funct runs once when the mob is created
 func _ready():
@@ -86,10 +81,9 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		state = CHASE # set mob to hunt the player
 		player = body # the body it chases is the player
 		
-		# first pellet has reduced timer for responsiveness
-		if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
-			# override the timer on first detection with short time
-			shoot_timer.start(2)
+		# tell component player was spotted
+		if has_node("ShootComponent"):
+			$ShootComponent.on_player_detected()
 
 # func called on player exiting the visibility radius
 func _on_player_detector_body_exited(body: Node2D) -> void:
@@ -97,26 +91,6 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 		state = PATROL # set mob to stop hunting
 		player = null # "forget" about the player as it left vis circle
 
-# project shooting logic
-func _on_shoot_timer_timeout() -> void:
-	# edge case: ensure player exists
-	if not is_instance_valid(player):
-		return # early exit
-	
-	# pellet shoot
-	sfx_player.stream = SHOOT_SOUND # set SFX
-	sfx_player.play() # play SFX
-		
-	# create and store pellet instance
-	var pellet = PELLET_SCENE.instantiate() # pellet instance create
-	active_projectile = pellet # store instance
-	
-	get_parent().add_child(pellet) # add pellet to level scene
-	# set starting position to Muzzle's global position
-	pellet.global_position = muzzle.global_position
-	# tell pellet which direction
-	pellet.direction = Vector2(direction, 0) # use enemy's direction
-	
 # public function the player can call
 func hit():
 	die() # call death on hit
@@ -126,15 +100,17 @@ func die():
 	# edge case: can't die twice
 	if is_stomped:
 		return # early exit
-	
 	is_stomped = true # set to stomped state
+	
+	# tell components to stop their actions
+	if has_node("ShootComponent"):
+		$ShootComponent.stop_shooting()
 		
 	# when stomped, the mobMob stops moving and gets squashed
 	set_physics_process(false) # completely stop the physics process
 	animated_sprite.play("squashed") # play death animation
 	sfx_player.stream = SQUASH_SOUND # set SFX
 	sfx_player.play() # play SFX
-	shoot_timer.stop() # stop bullet firing
 	
 	# disable detectors and collision box
 	$CollisionShape2D.set_deferred("disabled", true) # main solid body
