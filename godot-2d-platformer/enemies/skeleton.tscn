@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://w4x2qiodjxjd"]
+[gd_scene load_steps=4 format=3 uid="uid://w4x2qiodjxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://enemies/base_enemy.tscn" id="1_d0kqj"]
+[ext_resource type="PackedScene" uid="uid://bc0lmwfjvewcb" path="res://enemies/components/shoot_component.tscn" id="2_odbwd"]
+[ext_resource type="PackedScene" uid="uid://vksyk4dr776c" path="res://enemies/components/walk_component.tscn" id="3_760x0"]
 
 [node name="Skeleton" instance=ExtResource("1_d0kqj")]
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="ShootComponent" parent="." index="0" instance=ExtResource("2_odbwd")]
+
+[node name="WalkComponent" parent="." index="1" instance=ExtResource("3_760x0")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
 animation = &"squashed"

@@ -43,90 +43,16 @@ func _physics_process(delta):
 	# state machine
 	match state:
 		PATROL:
-			patrol_state(delta)
+			# if have WalkComponent, tell it to patrol
+			if has_node("WalkComponent"):
+				$WalkComponent.patrol(delta)
 		CHASE:
-			chase_state(delta)
-
-# mob movement (old _physics_process func)
-func patrol_state(delta):
-	# if mob  stomped, STOP patrol logic
-	if is_stomped:
-		return
-	
-	# apply gravity
-	if not is_on_floor():
-		velocity.y += gravity * delta # incr with -y acceleration
-
-	# if ray not colliding with anything, means it's at an edge
-	if not ground_check_ray.is_colliding():
-		direction *= -1.0 # flip the direction
-
-	# general velocity
-	velocity.x = direction * speed
-	
-	# muzzle update
-	if direction > 0: # face right
-		muzzle.position.x = abs(muzzle.position.x)
-	else: # face left
-		muzzle.position.x = -abs(muzzle.position.x)
-		
-	# flip_h true if -1 (left), false if 1 (right, default)
-	animated_sprite.flip_h = direction < 0
-	
-	# stateless raycast flip
-	# set ray's direction based on the 'direction' variable every frame
-	if direction > 0: # moving right
-		ground_check_ray.target_position.x = abs(ground_check_ray.target_position.x)
-	else: # moving left
-		ground_check_ray.target_position.x = -abs(ground_check_ray.target_position.x)
-		
-	animated_sprite.play("walk") # walk animation
-	move_and_slide() # godots magic func for sliding on floor
-
-# mob chase state
-func chase_state(delta):
-	# if mob  stomped, STOP chase logic
-	if is_stomped:
-		return
-		
-	# apply gravity
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	
-	# edge case
-	# if player disappears, go back to patrolling
-	if not is_instance_valid(player):
-		state = PATROL
-		return
-	
-	# calc direction to player and move towards them
-	# player - mob position to get either + or - value
-	var direction_to_player = (player.global_position - global_position).normalized()
-	
-	# update direction
-	if direction_to_player.x > 0: # player to the right
-		direction = 1 # right
-	else:
-		direction = -1 # left
-		
-	# apply velocity vector with chase speed boost
-	velocity.x = direction_to_player.x * speed * 4 # chase a bit faster
-	
-	# muzzle update
-	if direction > 0: # face right
-		muzzle.position.x = abs(muzzle.position.x)
-	else: # face left
-		muzzle.position.x = -abs(muzzle.position.x)
-	
-	# standard sprite flip and walk logic
-	animated_sprite.flip_h = velocity.x < 0
-	animated_sprite.play("walk")
-	move_and_slide()
-	
-	# shoot logic
-	# if timer has finished and no active project
-	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
-		shoot_timer.start() # restart the timer
+			# if have a WalkComponent, tell it to chase
+			if has_node("WalkComponent"):
+				$WalkComponent.chase(delta, player)
+			# if have a ShootComponent, tell it to consider shooting
+			if has_node("ShootComponent"):
+				$ShootComponent.process_shooting()
 
 # player touches enemy anywhere else
 func _on_side_detector_body_entered(body: Node2D) -> void:
