@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://w4x2qiodjxjd"]
+
+[ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://enemies/base_enemy.tscn" id="1_d0kqj"]
+
+[node name="Skeleton" instance=ExtResource("1_d0kqj")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"squashed"

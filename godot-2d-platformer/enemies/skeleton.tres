@@ -1,102 +1,101 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr58rfn6mjrfd"]
+[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://bnt5ii47nsd55"]
 
-[ext_resource type="Texture2D" uid="uid://bslgd3seqa8ow" path="res://assets/enemies/Skeleton_01_White_Die.png" id="1_6jlfs"]
-[ext_resource type="Script" uid="uid://c6nuondjp2227" path="res://mob/mob.gd" id="1_pirjb"]
-[ext_resource type="Texture2D" uid="uid://cifuo77ljw3v2" path="res://assets/enemies/Skeleton_01_White_Walk.png" id="2_pirjb"]
+[ext_resource type="Texture2D" uid="uid://bslgd3seqa8ow" path="res://assets/enemies/Skeleton_01_White_Die.png" id="1_a3isk"]
+[ext_resource type="Texture2D" uid="uid://cifuo77ljw3v2" path="res://assets/enemies/Skeleton_01_White_Walk.png" id="2_3ilmi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mixeo"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(0, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkfaf"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(96, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vcc1q"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(192, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ub8vd"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(288, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wq73"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(384, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bmme"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(480, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebo4t"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(576, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycc6u"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(672, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nixgp"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(768, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2dux"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(864, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyfq7"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(960, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3wlb"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(1056, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_od6er"]
-atlas = ExtResource("1_6jlfs")
+atlas = ExtResource("1_a3isk")
 region = Rect2(1152, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7p320"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(0, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjsub"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(96, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6xqh"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(192, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lawxq"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(288, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjlv8"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(384, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7gea"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(480, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um08m"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(576, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksn41"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(672, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftia2"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(768, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5j4wt"]
-atlas = ExtResource("2_pirjb")
+atlas = ExtResource("2_3ilmi")
 region = Rect2(864, 0, 96, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aal5p"]
+[resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -140,7 +139,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"squashed",
-"speed": 9.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -175,74 +174,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 9.0
+"speed": 12.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rxfc"]
-radius = 13.0
-height = 46.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pirjb"]
-size = Vector2(23.5, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(27.5, 46)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pirjb"]
-radius = 332.014
-
-[node name="Mob" type="CharacterBody2D" groups=["enemies"]]
-collision_layer = 2
-script = ExtResource("1_pirjb")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_aal5p")
-animation = &"squashed"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 20)
-scale = Vector2(2, 2)
-shape = SubResource("CapsuleShape2D_2rxfc")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 82)
-
-[node name="StompDetector" type="Area2D" parent="."]
-scale = Vector2(2, 2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2(-0.25, -14)
-shape = SubResource("RectangleShape2D_pirjb")
-
-[node name="SideDetector" type="Area2D" parent="."]
-scale = Vector2(2, 2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideDetector"]
-position = Vector2(-0.25, 10)
-shape = SubResource("RectangleShape2D_mixeo")
-
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="PlayerDetector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("CircleShape2D_pirjb")
-
-[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
-
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
-
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(38, 0)
-
-[connection signal="body_entered" from="StompDetector" to="." method="_on_stomp_detector_body_entered"]
-[connection signal="body_entered" from="SideDetector" to="." method="_on_side_detector_body_entered"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
-[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

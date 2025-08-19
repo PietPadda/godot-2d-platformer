@@ -312,7 +312,6 @@ texture = ExtResource("10_8t03j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
 position = Vector2(-10.3572, -30.0001)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8t03j")
 
 [node name="DashTapTimer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-# mob/mob.gd
+# enemies/base_enemy.gd
 
 extends CharacterBody2D
 

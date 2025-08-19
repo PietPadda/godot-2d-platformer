@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://wohnj7hu8qka"]
+[gd_scene load_steps=17 format=4 uid="uid://wohnj7hu8qka"]
 
 [ext_resource type="Script" uid="uid://cs0pl10dwpfhj" path="res://levels/level_1.gd" id="1_sof0w"]
 [ext_resource type="PackedScene" uid="uid://dd6m2bcb0e4q5" path="res://player/player.tscn" id="2_ggavl"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ds4jwcbbvo713" path="res://traps/spikes.tscn" id="10_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://cfos2bili20vo" path="res://ui/goal.tscn" id="11_ethxx"]
 [ext_resource type="AudioStream" uid="uid://csxhk8skerwf6" path="res://assets/audio/music/w2 Human 2.ogg" id="12_nmsli"]
-[ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://mob/mob.tscn" id="13_duihb"]
+[ext_resource type="PackedScene" uid="uid://w4x2qiodjxjd" path="res://enemies/skeleton.tscn" id="13_nmsli"]
+[ext_resource type="PackedScene" uid="uid://bycugg8660cyh" path="res://enemies/bat.tscn" id="14_betor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_ubhxj")
@@ -2393,26 +2394,32 @@ process_mode = 3
 stream = ExtResource("12_nmsli")
 autoplay = true
 
-[node name="Mob" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(-337, 268)
-
-[node name="Mob5" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(1270, 268)
-
-[node name="Mob6" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(2043, 268)
-
-[node name="Mob2" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(-870, 268)
-
-[node name="Mob3" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(-1597, 268)
-
-[node name="Mob4" parent="." instance=ExtResource("13_duihb")]
-position = Vector2(-2254, 268)
-
 [node name="SpeedBoost" parent="." instance=ExtResource("8_nmsli")]
 position = Vector2(33, 243)
 
 [node name="SpeedBoost2" parent="." instance=ExtResource("8_nmsli")]
 position = Vector2(-1705, 243)
+
+[node name="Skeleton" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-584, 266)
+
+[node name="Skeleton2" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-1926, 266)
+
+[node name="Skeleton3" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-1197, 266)
+
+[node name="Skeleton4" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-886, 266)
+
+[node name="Skeleton7" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-238, 266)
+
+[node name="Skeleton5" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-1560, 266)
+
+[node name="Skeleton6" parent="." instance=ExtResource("13_nmsli")]
+position = Vector2(-2244, 266)
+
+[node name="Bat" parent="." instance=ExtResource("14_betor")]
+position = Vector2(-1349, 272)
