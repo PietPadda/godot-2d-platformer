@@ -49,7 +49,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ieo8"]
-size = Vector2(43.1111, 52.4444)
+size = Vector2(43.5555, 43.5556)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
 size = Vector2(200.715, 490)
@@ -77,7 +77,7 @@ position_smoothing_speed = 3.0
 
 [node name="SlashEffect" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(71, 0)
+position = Vector2(52, 0)
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_32hag")
 
@@ -85,7 +85,7 @@ sprite_frames = SubResource("SpriteFrames_32hag")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlashEffect/Hitbox"]
-position = Vector2(-3.77777, -5.77778)
+position = Vector2(-3.55555, 1.33333)
 shape = SubResource("RectangleShape2D_2ieo8")
 disabled = true
 

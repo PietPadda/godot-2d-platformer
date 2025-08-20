@@ -29,7 +29,7 @@ func chase(delta, player_ref):
 	# fly directly towards the player (chase scope var)
 	var direction_to_player = (player_ref.global_position - body.global_position).normalized()
 	# use body's speed variable from base script
-	body.velocity = direction_to_player * body.speed * 4 
+	body.velocity = direction_to_player * body.speed
 
 	animated_sprite.flip_h = body.velocity.x < 0 # flip if going left
 	animated_sprite.play("fly")

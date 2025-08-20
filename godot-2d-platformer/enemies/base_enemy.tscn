@@ -5,14 +5,14 @@
 [ext_resource type="Script" uid="uid://cej6cs0t3yc30" path="res://enemies/side_detector.gd" id="3_b5ht1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rxfc"]
-radius = 13.0
-height = 46.0
+radius = 11.5
+height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pirjb"]
-size = Vector2(23.5, 2)
+size = Vector2(34, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(27.5, 46)
+size = Vector2(34, 21.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pirjb"]
 radius = 332.014

@@ -22,14 +22,14 @@ func _ready():
 	# connect ShootTimer node to our func
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
+func on_player_detected():
+	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
+		shoot_timer.start(0.5) # start earlier
+		
 func process_shooting():
 	# if timer stopped and pellet exists
 	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
 		shoot_timer.start() # restart timer
-		
-func on_player_detected():
-	if shoot_timer.is_stopped() and not is_instance_valid(active_projectile):
-		shoot_timer.start(0.5)
 
 func stop_shooting():
 	shoot_timer.stop()

@@ -86,8 +86,8 @@ func _physics_process(delta):
 	
 	# player movement state
 	if is_slashing:
-		# stop in tracks
-		velocity.x = 0
+		pass
+		# velocity.x = 0 # no movement affected
 	else: # not attacking
 		current_speed = SPEED # default movement speed
 		# modify speed if blocking
