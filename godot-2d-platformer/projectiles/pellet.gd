@@ -5,6 +5,7 @@ extends Area2D
 # variables
 var direction = Vector2.RIGHT
 var speed = 350.0
+var damage: int = 1 # damage with default value
 
 # pellet physics
 func _physics_process(delta):
@@ -15,8 +16,7 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	# hit the player, tell game they died
 	if body.is_in_group("player"):
-		GameEvents.deal_damage_to_player.emit(1) # do damage
-
+		GameEvents.deal_damage_to_player.emit(damage) # do damage
 	# destroy pellet on ANY collision
 	queue_free()
 

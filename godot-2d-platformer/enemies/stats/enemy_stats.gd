@@ -12,7 +12,7 @@ class_name EnemyStats # global name
 @export var chase_speed_multiplier: float = 1.0
 @export var bounce_factor: float = 1.0
 # damage
-@export var side_detector_damage: int = 1
+@export var contact_damage: int = 1
 
 # SHOOTING
 # flags
