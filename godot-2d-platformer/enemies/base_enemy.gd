@@ -2,6 +2,9 @@
 
 extends CharacterBody2D
 
+# resource file
+@export var stats: EnemyStats
+
 # state machine enums
 enum {PATROL, CHASE} # efine our states
 var state = PATROL # start in PATROL
@@ -13,7 +16,7 @@ var player = null # var to hold reference to  player
 @onready var sfx_player = $SFXPlayer
 
 # variables
-var speed = 40.0 # walk speed
+# var speed = 40.0 # walk speed (NOW IN ENEMY_STATS.GD)
 var direction: float # only init var
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_stomped = false # death state init
@@ -24,6 +27,12 @@ const SQUASH_SOUND = preload("res://assets/audio/enemy/bones_falling.wav")
 
 # funct runs once when the mob is created
 func _ready():
+	# err check stats
+	if not stats:
+		printerr("Enemy stats resource not assigned to: ", name) # err log
+		queue_free() # delete instance
+		return # early exit
+	
 	# randi() % 2 gives us either 0 or 1, perfect 50/50 chance
 	if randi() % 2 == 0: # if even
 		direction = 1.0 # Go right
@@ -62,7 +71,7 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 		die() # call death on hit
 		
 		# add a small bounce for the player
-		body.velocity.y = body.JUMP_VELOCITY * 0.7 
+		body.velocity.y = body.JUMP_VELOCITY * stats.player_bounce_factor
 
 # func called on timer one shot
 func _on_timer_timeout() -> void:
