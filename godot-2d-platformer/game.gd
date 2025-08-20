@@ -19,8 +19,6 @@ func _ready():
 	# seed the random number gen using the sys clock
 	randomize()
 	GameEvents.current_score = 0 # reset score on new game
-	# listen for global current_health signal
-	GameEvents.current_health = GameEvents.MAX_HEALTH
 	print("New game started! Player health set to: ", GameEvents.current_health) # DEBUG
 	# listen for global level_finished signal
 	GameEvents.level_finished.connect(on_level_finished)

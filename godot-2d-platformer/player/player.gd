@@ -2,6 +2,9 @@
 
 extends CharacterBody2D # scene class
 
+# resource file
+@export var stats: PlayerStats
+
 # ready nodes
 @onready var sfx_player = $SFXPlayer
 @onready var shield = $Shield
@@ -11,9 +14,6 @@ extends CharacterBody2D # scene class
 @onready var powerup_timer = $PowerupTimer
 @onready var invincibility_timer = $InvincibilityTimer
 
-# constants
-const JUMP_VELOCITY = -500.0 # float
-
 # get global grav for rigidbody
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -22,12 +22,10 @@ var jumps_left = 0 # init no jumps
 var is_blocking = false # init non-blocking mode
 var is_slashing = false # init non-slashing mode
 var direction: float # init direction var
-var current_speed = SPEED # capture horisontal speed
+var current_speed: float # declare curr speed type
 var dash_tap_count = 0 # count dash input attemps
 var last_dash_direction = 0 # track dash direction if double
 var is_dashing = false # init dash mode
-var DASH_multiplier = 2.5 # dash speed!
-var SPEED = 350.0 # float
 var speed_modifier = 1.0 # 100% speed, our default
 var is_invincible = false # invicibility frames after taking dmg
 
@@ -38,6 +36,25 @@ const DASH_SOUND = preload("res://assets/audio/player/double_dash.wav")
 const HURT_SOUND = preload("res://assets/audio/player/hurt.wav")
 const SPEED_POWERUP_SOUND = preload("res://assets/audio/player/speed_powerup.wav")
 const HEAL_SOUND = preload("res://assets/audio/player/heal.wav")
+
+# called on node entering scene
+func _ready():
+	# err check stats
+	if not stats:
+		printerr("Player stats resource not assigned to: ", name) # err log
+		queue_free() # delete instance
+		return # early exit
+		
+	# player tells global state what consts are via stats file
+	GameEvents.MAX_HEALTH = stats.max_health
+	GameEvents.current_health = stats.max_health
+	GameEvents.health_changed.emit(GameEvents.current_health)
+		
+	# link LOCAL func to GLOBAL SIGNAL
+	GameEvents.player_died.connect(on_player_died)
+	GameEvents.deal_damage_to_player.connect(take_damage)
+	GameEvents.speed_boost_collected.connect(on_speed_boost_collected)
+	GameEvents.player_healed.connect(on_player_healed)
 
 # physics handling
 func _physics_process(delta):
@@ -58,7 +75,7 @@ func _physics_process(delta):
 		
 	# jump on accept button + have jumps left
 	if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
-		velocity.y = JUMP_VELOCITY # sudden jump velocity
+		velocity.y = stats.jump_velocity # sudden jump velocity
 		jumps_left -= 1 # decr jumps
 		sfx_player.stream = JUMP_SOUND # set sfx
 		sfx_player.play() # play sound once
@@ -66,7 +83,7 @@ func _physics_process(delta):
 	# variable jump height
 	# hold jump button to go max, release to cut momentum
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
-		velocity.y = JUMP_VELOCITY * 0 # stop all momentum
+		velocity.y = stats.jump_velocity * 0 # stop all momentum
 		
 	# ATTACK
 	# attack on button and animation has reset
@@ -89,10 +106,10 @@ func _physics_process(delta):
 		pass
 		# velocity.x = 0 # no movement affected
 	else: # not attacking
-		current_speed = SPEED # default movement speed
+		current_speed = stats.speed # default movement speed
 		# modify speed if blocking
 		if is_blocking:
-			current_speed = SPEED * 0.4 # reduced speed when blocking
+			current_speed = stats.speed * stats.block_speed_multiplier # reduced speed when blocking
 			
 		# get left/right input
 		# Input.get_axis() returns a value between -1 and 1.
@@ -175,14 +192,6 @@ func _unhandled_input(event):
 			dash_tap_count = 1 # incr
 			dash_tap_timer.start() # timer till reset attempt
 
-# called on node entering scene
-func _ready():
-	# link LOCAL func to GLOBAL SIGNAL
-	GameEvents.player_died.connect(on_player_died)
-	GameEvents.deal_damage_to_player.connect(take_damage)
-	GameEvents.speed_boost_collected.connect(on_speed_boost_collected)
-	GameEvents.player_healed.connect(on_player_healed)
-
 # player take damage
 func take_damage(amount):
 	# invincibility frame check
@@ -233,7 +242,7 @@ func dash(direction_of_dash):
 		
 	is_dashing = true # we're dashing!
 	velocity.y = 0 # we stop verticality and "jump" to side
-	velocity.x = direction_of_dash * SPEED * DASH_multiplier # jump in dash dir
+	velocity.x = direction_of_dash * stats.speed * stats.dash_speed_multiplier # jump in dash dir
 	dash_duration_timer.start() # dash starts!
 	sfx_player.stream = DASH_SOUND # set sfx
 	sfx_player.play() # play sound once
@@ -251,7 +260,7 @@ func _on_dash_duration_timer_timeout() -> void:
 	
 # speedboost powerup
 func on_speed_boost_collected() -> void:
-	speed_modifier = 1.6 # 160% speed!
+	speed_modifier = stats.speed_powerup
 	powerup_timer.start() # start timer
 	sfx_player.stream = SPEED_POWERUP_SOUND # set sfx
 	sfx_player.play() # play sound once
