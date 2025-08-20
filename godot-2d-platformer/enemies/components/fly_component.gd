@@ -14,7 +14,7 @@ func _ready():
 	# flying enemies ignore gravity
 	body.gravity = 0 # override
 
-func patrol(delta):
+func patrol(_delta): # unused delta for now
 	# when patrolling, bat will just hover in place
 	body.velocity = body.velocity.lerp(Vector2.ZERO, 0.05) # hover
 	animated_sprite.play("sleep") # animation

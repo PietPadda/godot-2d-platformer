@@ -182,7 +182,6 @@ func _ready():
 	GameEvents.deal_damage_to_player.connect(take_damage)
 	GameEvents.speed_boost_collected.connect(on_speed_boost_collected)
 	GameEvents.player_healed.connect(on_player_healed)
-	invincibility_timer.timeout.connect(_on_invincibility_timer_timeout)
 
 # player take damage
 func take_damage(amount):
