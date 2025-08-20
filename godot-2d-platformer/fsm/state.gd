@@ -4,7 +4,7 @@ class_name State # class name
 
 # ready nodes
 # animation helper
-@onready var animation_player: AnimationPlayer = character.get_node("AnimationPlayer")
+# @onready var animation_player: AnimationPlayer = character.get_node("AnimationPlayer")
 
 # script vars
 var character: CharacterBody2D # ref to char state belongs to (player or enemy)

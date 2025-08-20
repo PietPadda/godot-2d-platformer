@@ -1,8 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd6m2bcb0e4q5"]
+[gd_scene load_steps=19 format=3 uid="uid://dd6m2bcb0e4q5"]
 
 [ext_resource type="Script" uid="uid://bdbeycqt0vetd" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Resource" uid="uid://buen4ybvp1d8n" path="res://player/stats/default_player_stats.tres" id="2_qjkh3"]
 [ext_resource type="SpriteFrames" uid="uid://b3ywhu6mv4ykd" path="res://player/player.tres" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://183bjx3kvb14" path="res://fsm/state_machine.gd" id="3_rgyib"]
+[ext_resource type="Script" uid="uid://dbrc3mtg2wb5i" path="res://player/states/player_idle.gd" id="4_hg6s5"]
+[ext_resource type="Script" uid="uid://384rw4jo76mn" path="res://player/states/player_run.gd" id="5_8t03j"]
+[ext_resource type="Script" uid="uid://b8m2qb6hs1rdl" path="res://player/states/player_jump.gd" id="6_8t03j"]
+[ext_resource type="Script" uid="uid://d4ck4xgswkfpa" path="res://player/states/player_fall.gd" id="7_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://6hb552114ws1" path="res://assets/player/shield.png" id="10_8t03j"]
 [ext_resource type="Texture2D" uid="uid://don44e5wonytp" path="res://assets/player/sword_slash1.png" id="11_2ieo8"]
 
@@ -58,6 +63,22 @@ size = Vector2(200.715, 490)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rkbax")
 stats = ExtResource("2_qjkh3")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_rgyib")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_hg6s5")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("5_8t03j")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_8t03j")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_2ieo8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 4)
