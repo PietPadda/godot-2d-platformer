@@ -6,13 +6,13 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rxfc"]
 radius = 11.5
-height = 34.0
+height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pirjb"]
-size = Vector2(34, 2)
+size = Vector2(34, 2.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixeo"]
-size = Vector2(34, 21.5)
+size = Vector2(34, 45)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pirjb"]
 radius = 332.014
@@ -38,7 +38,7 @@ target_position = Vector2(0, 82)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2(-0.25, -14)
+position = Vector2(-0.25, -13.75)
 shape = SubResource("RectangleShape2D_pirjb")
 
 [node name="SideDetector" type="Area2D" parent="."]

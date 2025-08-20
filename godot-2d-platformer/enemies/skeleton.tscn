@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://w4x2qiodjxjd"]
+[gd_scene load_steps=8 format=3 uid="uid://w4x2qiodjxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://enemies/base_enemy.tscn" id="1_d0kqj"]
 [ext_resource type="Script" uid="uid://uj64jwa6m5e" path="res://enemies/skeleton.gd" id="2_760x0"]
 [ext_resource type="PackedScene" uid="uid://bc0lmwfjvewcb" path="res://enemies/components/shoot_component.tscn" id="2_odbwd"]
 [ext_resource type="PackedScene" uid="uid://vksyk4dr776c" path="res://enemies/components/walk_component.tscn" id="3_760x0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_760x0"]
+radius = 16.5
+height = 47.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_760x0"]
+size = Vector2(34, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fandg"]
+size = Vector2(34, 45)
 
 [node name="Skeleton" instance=ExtResource("1_d0kqj")]
 script = ExtResource("2_760x0")
@@ -15,5 +25,13 @@ script = ExtResource("2_760x0")
 [node name="AnimatedSprite2D" parent="." index="2"]
 animation = &"squashed"
 
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_760x0")
+
+[node name="CollisionShape2D" parent="StompDetector" index="0"]
+shape = SubResource("RectangleShape2D_760x0")
+
 [node name="CollisionShape2D" parent="SideDetector" index="0"]
 position = Vector2(-0.25, 9.5)
+shape = SubResource("RectangleShape2D_fandg")
