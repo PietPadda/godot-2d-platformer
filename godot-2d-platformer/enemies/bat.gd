@@ -1,4 +1,4 @@
-# enemies/skeleton.gd
+# enemies/bat.gd
 
 extends "res://enemies/base_enemy.gd" # inherited base class
 
@@ -8,5 +8,4 @@ func _ready() -> void:
 	super() # parent ready
 	
 	# Bat Overrides
-	speed = 240 # increase speed
 	gravity = 0 # no grav for bats!

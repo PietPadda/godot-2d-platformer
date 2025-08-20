@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bycugg8660cyh"]
+[gd_scene load_steps=9 format=3 uid="uid://bycugg8660cyh"]
 
 [ext_resource type="PackedScene" uid="uid://cr58rfn6mjrfd" path="res://enemies/base_enemy.tscn" id="1_nu3at"]
 [ext_resource type="Script" uid="uid://dn2ctdwlm7oe4" path="res://enemies/bat.gd" id="2_5of3o"]
 [ext_resource type="PackedScene" uid="uid://bnmdim26gvqlx" path="res://enemies/components/fly_component.tscn" id="2_tc28o"]
 [ext_resource type="SpriteFrames" uid="uid://xpyr7hib0pc5" path="res://enemies/bat.tres" id="3_tc28o"]
+[ext_resource type="Resource" uid="uid://dnpn4xq2fn4ta" path="res://enemies/bat_stats.tres" id="3_wnjb2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5of3o"]
 radius = 11.5
@@ -17,6 +18,7 @@ size = Vector2(34, 23.5)
 
 [node name="Bat" instance=ExtResource("1_nu3at")]
 script = ExtResource("2_5of3o")
+stats = ExtResource("3_wnjb2")
 
 [node name="FlyComponent" parent="." index="0" instance=ExtResource("2_tc28o")]
 

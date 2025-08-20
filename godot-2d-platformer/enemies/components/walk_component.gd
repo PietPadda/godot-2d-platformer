@@ -19,7 +19,7 @@ func patrol(delta):
 		body.velocity.y += body.gravity * delta # apply grav
 	if not ground_check_ray.is_colliding():
 		body.direction *= -1.0 # turn around if at edge
-	body.velocity.x = body.direction * body.speed # walk
+	body.velocity.x = body.direction * body.stats.speed # walk
 	update_visuals() # update animations
 	body.move_and_slide() # move
 
@@ -32,7 +32,7 @@ func chase(delta, player_ref):
 		body.direction = 1.0  # move right
 	else: 
 		body.direction = -1.0 # move left
-	body.velocity.x = body.direction * body.speed * 1.5 # hor vel
+	body.velocity.x = body.direction * body.stats.speed * 1.5 # hor vel
 	update_visuals() # update animations
 	body.move_and_slide() # move
 
