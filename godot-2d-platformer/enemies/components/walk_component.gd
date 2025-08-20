@@ -32,7 +32,7 @@ func chase(delta, player_ref):
 		body.direction = 1.0  # move right
 	else: 
 		body.direction = -1.0 # move left
-	body.velocity.x = body.direction * body.stats.speed * 1.5 # hor vel
+	body.velocity.x = body.direction * body.stats.speed * body.stats.chase_speed_multiplier # hor vel
 	update_visuals() # update animations
 	body.move_and_slide() # move
 

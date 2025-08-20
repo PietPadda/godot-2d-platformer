@@ -8,4 +8,4 @@ func _ready() -> void:
 	super() # parent ready
 	
 	# Skeleton Overrides
-	$ShootTimer.wait_time = 2 # update shoot time
+	$ShootTimer.wait_time = stats.fire_rate # update shoot time

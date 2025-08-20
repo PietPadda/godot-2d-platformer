@@ -71,7 +71,7 @@ func _on_stomp_detector_body_entered(body: Node2D) -> void:
 		die() # call death on hit
 		
 		# add a small bounce for the player
-		body.velocity.y = body.JUMP_VELOCITY * stats.player_bounce_factor
+		body.velocity.y = body.JUMP_VELOCITY * stats.bounce_factor
 
 # func called on timer one shot
 func _on_timer_timeout() -> void:
@@ -120,8 +120,8 @@ func die():
 	
 	# disable detectors and collision box
 	$CollisionShape2D.set_deferred("disabled", true) # main solid body
-	$SideDetector.monitoring = false
-	$StompDetector.monitoring = false
+	$SideDetector.set_deferred("monitoring", true) # side hitbox
+	$StompDetector.set_deferred("monitoring", true) # top hitbox
 
 	# start timer to deletion
 	$DeathTimer.start()

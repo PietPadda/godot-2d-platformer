@@ -50,13 +50,13 @@ func _unhandled_input(event):
 func load_level():
 	# clear current level instance
 	if is_instance_valid(current_level_instance):
-		current_level_instance.queue_free()
+		current_level_instance.call_deferred("queue_free")
 	
 	# get next level path
 	var level_path = level_scenes[current_level_index]
 	var level_scene = load(level_path) # set level scene
 	current_level_instance  = level_scene.instantiate() # create level instance
-	add_child(current_level_instance ) # add instannce as child
+	call_deferred("add_child", current_level_instance) # add instannce as child
 
 # called with level_finished signal
 func on_level_finished():
@@ -69,4 +69,4 @@ func on_level_finished():
 		load_level()
 	else: # we've reach the end
 		# change active scene to win screen
-		get_tree().change_scene_to_packed(WIN_SCREEN)
+		get_tree().call_deferred("change_scene_to_packed", WIN_SCREEN)

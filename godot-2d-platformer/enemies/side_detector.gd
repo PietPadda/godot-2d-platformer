@@ -24,7 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 # player exit side detector
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		damage_timer.start() # start dmg timer
+		damage_timer.stop() # stop dmg timer
 
 # damage timer tick
 func _on_damage_timer_timeout() -> void:

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://c1o46grg1w8rl"]
+
+[ext_resource type="PackedScene" uid="uid://byj0b7grpu45j" path="res://projectiles/pellet.tscn" id="1_l1p6r"]
+[ext_resource type="Script" uid="uid://bkeq6ivjedq03" path="res://enemies/stats/enemy_stats.gd" id="2_2yhhs"]
+
+[resource]
+script = ExtResource("2_2yhhs")
+max_health = 1
+speed = 50.0
+chase_speed_multiplier = 5.0
+bounce_factor = 0.5
+can_shoot = true
+fire_rate = 2.5
+projectile_scene = ExtResource("1_l1p6r")
+metadata/_custom_type_script = "uid://bkeq6ivjedq03"
