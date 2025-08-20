@@ -13,6 +13,7 @@ extends CharacterBody2D # scene class
 @onready var dash_duration_timer = $DashDurationTimer
 @onready var powerup_timer = $PowerupTimer
 @onready var invincibility_timer = $InvincibilityTimer
+@onready var animated_sprite = $AnimatedSprite2D
 
 # get global grav for rigidbody
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -55,6 +56,10 @@ func _ready():
 	GameEvents.deal_damage_to_player.connect(take_damage)
 	GameEvents.speed_boost_collected.connect(on_speed_boost_collected)
 	GameEvents.player_healed.connect(on_player_healed)
+	
+	# Player and all its @onready vars are initialized
+	# tell the StateMachine to start. We pass 'self' so it knows who the character is
+	$StateMachine.init(self)
 
 # physics handling
 func _physics_process(delta):

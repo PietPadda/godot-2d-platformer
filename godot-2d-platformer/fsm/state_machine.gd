@@ -9,6 +9,10 @@ var current_state: State
 
 # init func
 func _ready():
+	pass # now does nothing
+	
+# called by the Player when it's ready
+func init(character_node: CharacterBody2D):
 	# give each state ref to the char (parent of node)
 	for child in get_children(): # loop thru direct child nodes of state machine
 		if child is State:# check if child node is a state type
