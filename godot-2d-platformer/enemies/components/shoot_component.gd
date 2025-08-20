@@ -54,3 +54,7 @@ func _on_shoot_timer_timeout() -> void:
 	# tell pellet which direction
 	pellet.direction = Vector2(body.direction, 0) # use enemy's direction via body
 	
+	# set pellet speed from enemy stats
+	if body.stats:
+		pellet.speed = body.stats.projectile_speed
+	

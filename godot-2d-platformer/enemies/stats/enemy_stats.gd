@@ -4,13 +4,23 @@ extends Resource # base class
 
 class_name EnemyStats # global name
 
-# enemy stats
+# ENEMY
+# stats
 @export var max_health: int = 1
-@export var speed: float = 50.0
+# speed
+@export var speed: float = 100.0
 @export var chase_speed_multiplier: float = 1.0
-@export var bounce_factor: float = 0.5
+@export var bounce_factor: float = 1.0
+# damage
+@export var side_detector_damage: int = 1
 
-# shooting stats
-@export var can_shoot: bool = true
-@export var fire_rate: float = 1.0
+# SHOOTING
+# flags
+@export var can_shoot: bool = false
+# scenes
 @export var projectile_scene: PackedScene # drag into inspector
+# speed
+@export var fire_rate: float = 1.0
+@export var projectile_speed: float = 100.0
+# damage
+@export var projectile_damage: int = 1
