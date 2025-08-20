@@ -48,7 +48,7 @@ func _on_shoot_timer_timeout() -> void:
 	var pellet = PELLET_SCENE.instantiate() # pellet instance create
 	active_projectile = pellet # store instance
 	
-	get_parent().add_child(pellet) # add pellet to level scene
+	body.get_parent().add_child(pellet) # add pellet to level scene
 	# set starting position to Muzzle's global position
 	pellet.global_position = muzzle.global_position
 	# tell pellet which direction

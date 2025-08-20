@@ -4,7 +4,7 @@ extends Area2D
 
 # variables
 var direction = Vector2.RIGHT
-var speed = 350.0
+var speed = 100.0 # default speed
 var damage: int = 1 # damage with default value
 
 # pellet physics

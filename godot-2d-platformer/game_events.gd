@@ -26,4 +26,4 @@ signal player_healed(amount) # carry the amount of health to restore
 # global variables
 var current_score = 0 # init 0
 var MAX_HEALTH = 3 # default, overwritten by player (init before updating)
-var current_health = MAX_HEALTH # player hp tracker
+var current_health = MAX_HEALTH # player hp tracker (init to default)

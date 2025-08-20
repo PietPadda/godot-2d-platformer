@@ -6,13 +6,13 @@
 [resource]
 script = ExtResource("2_2yhhs")
 max_health = 1
-speed = 100.0
+speed = 50.0
 chase_speed_multiplier = 3.5
 bounce_factor = 1.0
 contact_damage = 2
 can_shoot = true
 projectile_scene = ExtResource("1_l1p6r")
 fire_rate = 2.5
-projectile_speed = 150.0
+projectile_speed = 0.0
 projectile_damage = 1
 metadata/_custom_type_script = "uid://bkeq6ivjedq03"
