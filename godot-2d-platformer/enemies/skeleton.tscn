@@ -11,7 +11,7 @@ radius = 16.5
 height = 47.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_760x0"]
-size = Vector2(34, 2)
+size = Vector2(34, 3.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fandg"]
 size = Vector2(34, 45)
@@ -32,6 +32,7 @@ position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_760x0")
 
 [node name="CollisionShape2D" parent="StompDetector" index="0"]
+position = Vector2(-0.25, -14.625)
 shape = SubResource("RectangleShape2D_760x0")
 
 [node name="CollisionShape2D" parent="SideDetector" index="0"]

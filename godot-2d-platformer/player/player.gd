@@ -8,6 +8,7 @@ extends CharacterBody2D # scene class
 # ready nodes
 @onready var sfx_player = $SFXPlayer
 @onready var shield = $Shield
+@onready var shield_sprite = $Shield/Sprite2D
 @onready var slash_effect = $SlashEffect
 @onready var dash_tap_timer = $DashTapTimer
 @onready var dash_duration_timer = $DashDurationTimer
@@ -20,10 +21,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # variables
 var jumps_left = 0 # init no jumps
-var is_blocking = false # init non-blocking mode
 var is_slashing = false # init non-slashing mode
 var direction: float # init direction var
-var current_speed: float # declare curr speed type
 var dash_tap_count = 0 # count dash input attemps
 var last_dash_direction = 0 # track dash direction if double
 var is_dashing = false # init dash mode
@@ -71,9 +70,6 @@ func _physics_process(delta):
 
 # helper function to manage visuals
 func sync_visuals():
-	# same logic from the end of our old _physics_process
-	var shield_sprite = $Shield.get_node("Sprite2D") # Note: using @onready is safer
-
 	shield_sprite.flip_h = $AnimatedSprite2D.flip_h
 	slash_effect.flip_h = $AnimatedSprite2D.flip_h
 	
@@ -158,7 +154,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 # double dash func
 func dash(direction_of_dash):
 	# edge case: no dash while busy with another action
-	if is_blocking or is_slashing or is_dashing:
+	if is_slashing or is_dashing:
 		return # early return
 		
 	is_dashing = true # we're dashing!

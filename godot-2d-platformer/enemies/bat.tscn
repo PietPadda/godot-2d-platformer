@@ -11,10 +11,10 @@ radius = 11.5
 height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5of3o"]
-size = Vector2(34, 2)
+size = Vector2(34, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnjb2"]
-size = Vector2(34, 23.5)
+size = Vector2(34, 21.5)
 
 [node name="Bat" instance=ExtResource("1_nu3at")]
 script = ExtResource("2_5of3o")
@@ -35,9 +35,9 @@ shape = SubResource("CapsuleShape2D_5of3o")
 enabled = false
 
 [node name="CollisionShape2D" parent="StompDetector" index="0"]
-position = Vector2(0, -10.5)
+position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_5of3o")
 
 [node name="CollisionShape2D" parent="SideDetector" index="0"]
-position = Vector2(0, 0.25)
+position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_wnjb2")

@@ -18,6 +18,8 @@ func process_physics(delta) -> State:
 		return get_parent().get_node("Jump")
 	if Input.get_axis("ui_left", "ui_right") != 0:
 		return get_parent().get_node("Run")
+	if Input.is_action_pressed("block") and character.is_on_floor():
+		return get_parent().get_node("Block")
 	# We'll add the other states like Slash later.
 
 	# Apply physics (friction)
