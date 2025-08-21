@@ -27,8 +27,11 @@ func process_physics(delta) -> State:
 	var block_speed = character.stats.speed * character.stats.block_speed_multiplier
 	character.velocity.x = direction * block_speed
 	
-	if direction != 0:
+	if direction != 0: # if there's movement
+		character.animated_sprite.play("run")
 		character.animated_sprite.flip_h = direction < 0
+	else: # no movement
+		character.animated_sprite.play("idle")
 	
 	character.move_and_slide()
 	return null # stay in the block state
