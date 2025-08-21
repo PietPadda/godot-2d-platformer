@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_od7uv")
 max_health = 6
-speed = 350.0
+speed = 300.0
 jump_velocity = -500.0
 dash_speed_multiplier = 2.5
+block_speed_multiplier = 0.4
+speed_powerup = 1.6
 metadata/_custom_type_script = "uid://d3hhe3v0l0dbd"

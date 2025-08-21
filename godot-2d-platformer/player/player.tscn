@@ -113,6 +113,7 @@ shape = SubResource("RectangleShape2D_2ieo8")
 disabled = true
 
 [node name="Shield" type="Area2D" parent="."]
+visible = false
 position = Vector2(17, 9)
 scale = Vector2(0.2, 0.2)
 collision_mask = 2
